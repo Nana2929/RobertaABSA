@@ -119,12 +119,17 @@ class Instructor:
                         fitlog.add_best_metric(max_test_f1, "f1")
                         if self.opt.save and test_f1 > self.global_f1:
                             self.global_f1 = test_f1
+                            layer = self.opt.layer
+                            if not self.opt.layer:
+                                layer = 'unk'
                             torch.save(
                                 self.model.state_dict(),
                                 "state_dict/"
                                 + self.opt.model_name
                                 + "_"
-                                + self.opt.dataset
+                                + self.opt.dset_name
+                                + "_"
+                                + layer
                                 + ".pkl",
                             )
                             print(">>> best model saved.")
@@ -217,10 +222,13 @@ if __name__ == "__main__":
     parser.add_argument("--embed_dim", default=300, type=int)
     parser.add_argument("--hidden_dim", default=300, type=int)
     parser.add_argument("--dropout", default=0.7, type=float)
+    # 10/22 add model saving mechanism
+    parser.add_argument("--save")
 
     opt = parser.parse_args()  # opt--->all args
-    if opt.dataset.endswith("/"):
-        opt.dataset = opt.dataset[:-1]
+    # if opt.dataset.endswith("/"):
+    # 10/22 fix parsing issue
+    opt.dset_name = opt.dataset.split('/')[-1]
     ################fitlog code####################
     fitlog.set_log_dir("logs")
     fitlog.set_rng_seed()
@@ -234,9 +242,11 @@ if __name__ == "__main__":
     opt.log_step = 20
     opt.l2reg = 1e-5
     opt.early_stop = 25
+    print(f'Save model? {opt.save}')
 
     if "/" in opt.dataset:
         pre_model_name, layer, dataset = opt.dataset.split("/")[-3:]
+        opt.layer = layer
     else:
         pre_model_name, dataset = "None", opt.dataset
         layer = "0"
@@ -275,8 +285,10 @@ if __name__ == "__main__":
     opt.initializer = initializers[opt.initializer]
     opt.optimizer = optimizers[opt.optimizer]
     opt.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    opt.save = False
     opt.refresh = False
 
+    if opt.save:
+        os.makedirs("./state_dict/", exist_ok=True)
+        print("Output directory `./state_dict/` created.")
     ins = Instructor(opt)
     ins.run()

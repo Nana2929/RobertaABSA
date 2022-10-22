@@ -30,11 +30,11 @@ class DynamicLSTM(nn.Module):
         self.bidirectional = bidirectional
         self.only_use_last_hidden_state = only_use_last_hidden_state
         self.rnn_type = rnn_type
-        
-        if self.rnn_type == 'LSTM': 
+
+        if self.rnn_type == 'LSTM':
             self.RNN = nn.LSTM(
                 input_size=input_size, hidden_size=hidden_size, num_layers=num_layers,
-                bias=bias, batch_first=batch_first, dropout=dropout, bidirectional=bidirectional)  
+                bias=bias, batch_first=batch_first, dropout=dropout, bidirectional=bidirectional)
         elif self.rnn_type == 'GRU':
             self.RNN = nn.GRU(
                 input_size=input_size, hidden_size=hidden_size, num_layers=num_layers,
@@ -43,7 +43,6 @@ class DynamicLSTM(nn.Module):
             self.RNN = nn.RNN(
                 input_size=input_size, hidden_size=hidden_size, num_layers=num_layers,
                 bias=bias, batch_first=batch_first, dropout=dropout, bidirectional=bidirectional)
-        
 
     def forward(self, x, x_len, h0=None):
         """
@@ -59,15 +58,18 @@ class DynamicLSTM(nn.Module):
         x_len = x_len[x_sort_idx]
         x = x[x_sort_idx.long()]
         """pack"""
-        x_emb_p = torch.nn.utils.rnn.pack_padded_sequence(x, x_len, batch_first=self.batch_first)
-        
+
+        x_len = x_len.cpu() # ADD this line to prevent RuntimeError: 'lengths' argument should be a 1D CPU int64 tensor, but got 1D cuda:0 Long tensor
+        x_emb_p = torch.nn.utils.rnn.pack_padded_sequence(
+            x, x_len, batch_first=self.batch_first)
+
         # process using the selected RNN
         if self.rnn_type == 'LSTM':
-            if h0 is None: 
+            if h0 is None:
                 out_pack, (ht, ct) = self.RNN(x_emb_p, None)
             else:
                 out_pack, (ht, ct) = self.RNN(x_emb_p, (h0, h0))
-        else: 
+        else:
             if h0 is None:
                 out_pack, ht = self.RNN(x_emb_p, None)
             else:

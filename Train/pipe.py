@@ -109,7 +109,6 @@ class DataPipe(Pipe):
         data_bundle = DataLoader().load(paths)
         return self.process(data_bundle)
 
-
 class DataLoader(Loader):
     def __init__(self):
         super().__init__()

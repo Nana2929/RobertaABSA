@@ -37,7 +37,7 @@ def build_embedding_matrix(word2idx, embed_dim, type, refresh=0):
         elif type == "sp":
             fname = "../glove/word2vec_spanish.txt"
         else:
-            fname = "../../glove/glove.840B.300d.txt"
+            fname = "../glove/glove.840B.300d.txt"
         word_vec = load_word_vec(fname, word2idx=word2idx)
         print("building embedding_matrix:", embedding_matrix_file_name)
         for word, i in word2idx.items():
@@ -120,7 +120,7 @@ class ABSADatesetReader:
         lines = fin.readlines()
         fin.close()
         with open(fname + ".graph", "rb") as fin:
-            idx2gragh = pickle.load(fin)  
+            idx2gragh = pickle.load(fin)
         all_data = []
         for i in range(0, len(lines), 3):
             text_left, _, text_right = [

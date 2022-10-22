@@ -64,6 +64,7 @@ if __name__ == "__main__":
                 graph_fn = "{}_{}.xml.seg.graph".format(dataset, split)
             trees, results = dep_parsing_new(args)
             dep_eval(trees, results)
+            print(f'Processing {fn}...')
             with open(
                 os.path.join(save_folder, gold_fn), "w", encoding="utf8"
             ) as f1, open(os.path.join(save_folder, graph_fn), "wb") as f2:

@@ -37,7 +37,7 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-
+    print('USING CUDA: ', args.cuda)
     if "/" not in args.dataset:
         args.dataset = os.path.join(args.data_dir, args.dataset)
     dataset_name = os.path.basename(args.dataset)
@@ -57,6 +57,7 @@ if __name__ == "__main__":
     if "/" in args.model_path:
         pretrained_weights = args.model_path
         parts = pretrained_weights.split("/")[-2].split("-")
+        print('parts', parts)
         if len(parts) == 2:  # "roberta-Laptop"
             trained_on = parts[-1]
             msg = ""

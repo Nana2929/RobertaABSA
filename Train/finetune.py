@@ -22,7 +22,7 @@ from transformers import XLMRobertaModel, XLNetModel
 from pipe import DataPipe
 
 # fitlog.debug()
-root_fp = r"/your/work/space/RoBERTaABSA/Train"
+root_fp = r"/home/P76114511/RoBERTaABSA/Train"
 os.makedirs(f"{root_fp}/FT_logs", exist_ok=True)
 
 
@@ -70,8 +70,8 @@ parser.add_argument("--dropout", default=0.5,type=float)
 parser.add_argument("--warmup",default=0.01,type=float)
 
 args = parser.parse_args()
-
-args.data_dir = r"/your/work/space/RoBERTaABSA/Dataset"
+print(f'args.data_dir: {args.data_dir}')
+# args.data_dir = r"/your/work/space/RoBERTaABSA/Dataset"
 
 fitlog.add_hyper(args)
 print(args)
@@ -273,7 +273,8 @@ trainer.train(load_best_model=True)
 if args.save_embed:
     fitlog.add_other(trainer.start_time, name="start_time")
     os.makedirs(f"{root_fp}/save_models", exist_ok=True)
-    folder = f"{root_fp}/save_models/{model_type}-{args.dataset}-FT-{trainer.start_time[:19]}"
+    trainer_st = trainer.start_time[:19].replace("-", "_")
+    folder = f"{root_fp}/save_models/{model_type}-{args.dataset}-FT-{trainer_st}"
 
     if not os.path.exists(folder):
         os.makedirs(folder, exist_ok=True)

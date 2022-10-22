@@ -95,7 +95,7 @@ def get_dep_matrix(args, model, tokenizer, dataset):
 
 ####### revison here
 def get_dep_matrix_new(args, model, tokenizer, dataset):
-    
+
     mask_id = tokenizer.mask_token_id
     model.eval()
 
@@ -116,7 +116,7 @@ def get_dep_matrix_new(args, model, tokenizer, dataset):
 
             for idx, word in enumerate(sentence):
                 bpes = tokenizer.convert_tokens_to_ids(
-                    tokenizer.tokenize(word, add_special_tokens=True)
+                    tokenizer.tokenize(word)  # add_special_tokens=True
                 )
                 mapping.extend([idx] * len(bpes))  # 记录第idx个word被bpe成几个
                 indexed_tokens.extend(bpes)
