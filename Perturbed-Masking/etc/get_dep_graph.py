@@ -6,6 +6,7 @@ Visualize Dependency Graphs
 
 ======================
 '''
+#%%
 import os
 import pickle
 import spacy
@@ -25,7 +26,6 @@ def read_graph(fname):
         text_left, _, text_right = [
             s.lower().strip() for s in lines[i].partition("$T$")
         ]
-
         aspect = lines[i + 1].lower().strip()
         polarity = lines[i + 2].strip()
         polarity = int(polarity) + 1
@@ -70,7 +70,7 @@ def graph2doc(data: Dict):
 # ============ driver code ============
 
 # which layer's induced-graph to use (0 - 12)
-layer = 6
+layer = 7
 # data id; which data example to use (0 - dataset split size)
 did = 3
 exgf = os.path.join(os.getcwd(
@@ -101,3 +101,23 @@ output_path.open("w", encoding="utf-8").write(depfig)
 # }
 
 
+
+# %%
+import pickle
+# %%
+filepath = "/home/nanaeilish/projects/Github/RobertaABSA/Perturbed-Masking/save_matrix/roberta/Laptop/test-0.pkl"
+
+with open(filepath, 'rb') as f:
+    a = pickle.load(f)
+# %%
+
+from pathlib import Path
+b = Path(filepath).read_bytes()
+# %%
+import numpy as np
+np.load(filepath, allow_pickle=True)
+# %%
+import torch
+torch.load(filepath)
+
+# %%

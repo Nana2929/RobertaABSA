@@ -105,3 +105,4 @@ if __name__ == "__main__":
                         f1.write("{}\n".format(mapping[aspect["polarity"]]))
                         adj_matrixes[len(adj_matrixes) * 3] = adj_matrix
                 pickle.dump(adj_matrixes, f2)
+    np.save(f'/home/nanaeilish/projects/Github/RobertaABSA/Perturbed-Masking/DepTrees/trees-{args.layers}.npy', trees)
