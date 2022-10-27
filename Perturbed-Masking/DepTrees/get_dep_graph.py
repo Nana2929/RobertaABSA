@@ -17,18 +17,15 @@ from pathlib import Path
 import numpy as np
 import json
 
-
+PROJECT_ROOT = '/Users/yangqingwen/Desktop/Github'
 TOKEN = 'token'
 def read_graph(dname:str, split:str, layer:int, dataid:int = 0):
-    global out
-    global dsetfile
     graphname = f'{dname}/{split}-{layer}.npy'
-    dsetdir = f'/home/nanaeilish/projects/Github/RobertaABSA/Dataset/Laptop'
+    dsetdir = f'{PROJECT_ROOT}/RobertaABSA/Dataset/Laptop'
     dset = os.path.join(dsetdir, split+'.json')
     with open(dset, 'r') as f:
         dsetfile = json.load(f)
     out = np.load(graphname, allow_pickle =True)
-
     return out[dataid], dsetfile[dataid][TOKEN]
 
 
@@ -39,7 +36,7 @@ def graph2doc(sentence: List[str], adjlist: List[Tuple[int, int]]):
     doc = {'words':[], 'arcs':[]}
     collect_arcs = adjlist
     sentence = ['[CLS]'] + sentence
-    print(sentence)
+
     # remove self-cycles
     # see line 90 in Perturebed-Masking/dependency/dep_parsing.py
     # alternative 1: it seems that the first token [CLS] is the fake root node to be excluded
@@ -65,22 +62,33 @@ def graph2doc(sentence: List[str], adjlist: List[Tuple[int, int]]):
 # ============ driver code ============
 
 # which layer's induced-graph to use (0 - 12)
-layer = 7
+# layer = 7
 # data id; which data example to use (0 - dataset split size)
-dataid = 100
-split = 'Train'
+# dataid = 100
+# split = 'Train'
+dirpath = f"{PROJECT_ROOT}/RObertaABSA/Perturbed-Masking/DepTrees"
+MAXLAYER = 13
 
-dirpath = "/home/nanaeilish/projects/Github/RobertaABSA/Perturbed-Masking/DepTrees/"
-exgf = os.path.join(dirpath, f'{split}-7.npy')
-adjlist, tokens = read_graph(dataid = dataid, split = split, layer = layer,
-        dname = '/home/nanaeilish/projects/Github/RobertaABSA/Perturbed-Masking/DepTrees')
-doc = graph2doc(adjlist = adjlist, sentence = tokens)
-# depfig = displacy.render(doc, manual=True, style="dep", jupyter=False)
-displacy.render(doc, manual = True, style = "dep", jupyter = True)
-os.makedirs(f'{dirpath}/{layer}/images', exist_ok=True)
-output_path = Path(os.path.join(os.getcwd(
-), f'{dirpath}/{layer}/images/{split}-l{layer}-{dataid}.svg')) # you can keep there only "dependency_plot.svg" if you want to save it in the same folder where you run the script
-output_path.open("w", encoding="utf-8").write(depfig)
+# for layer in range(MAXLAYER):
+layer  = 7
+for split in ['Train', 'Test']:
+    dsetdir = f'{PROJECT_ROOT}/RobertaABSA/Dataset/Laptop'
+    dset = os.path.join(dsetdir, split+'.json')
+    with open(dset, 'r') as f:
+        dsetfile = json.load(f)
+    splitsize = len(dsetfile)
+    for dataid in range(splitsize):
+        print(f'outputting split {split}; layer {layer}; data id {dataid}')
+        exgf = os.path.join(dirpath, f'{split}-7.npy')
+        adjlist, tokens = read_graph(dataid = dataid, split = split, layer = layer,
+                dname = dirpath)
+        doc = graph2doc(adjlist = adjlist, sentence = tokens)
+        depfig = displacy.render(doc, manual=True, style="dep", jupyter=False)
+        # displacy.render(doc, manual = True, style = "dep", jupyter = True)
+        os.makedirs(f'{dirpath}/{layer}/images', exist_ok=True)
+        output_path = Path(os.path.join(os.getcwd(
+        ), f'{dirpath}/{layer}/images/{split}-l{layer}-{dataid}.svg')) # you can keep there only "dependency_plot.svg" if you want to save it in the same folder where you run the script
+        output_path.open("w", encoding="utf-8").write(depfig)
 
 # See 'Rendering Data Manually'
 # ValueError: max() arg is an empty sequence
