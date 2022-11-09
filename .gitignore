@@ -5,7 +5,8 @@
 FT_logs
 search/
 save_models
-
+# embeddings data
+glove/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -47,6 +47,7 @@ if __name__ == "__main__":
     save_folder = os.path.join("asgcn2", model_type, args.layers, dataset)
 
     print("Save to {}".format(save_folder))
+
     mapping = {"positive": 1, "neutral": 0, "negative": -1}
     fns = os.listdir(matrix_folder)
     for fn in fns:
@@ -69,6 +70,7 @@ if __name__ == "__main__":
                 os.path.join(save_folder, gold_fn), "w", encoding="utf8"
             ) as f1, open(os.path.join(save_folder, graph_fn), "wb") as f2:
                 print("Writing to {}".format(gold_fn))
+                print('->', os.path.join(save_folder, graph_fn))
                 adj_matrixes = {}
                 for ((line, _, _), tree) in zip(results, trees):
                     sentence = [x.form for x in line][1:]  # [去掉root]
