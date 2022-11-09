@@ -5,13 +5,14 @@
 FT_logs
 search/
 save_models
-# embeddings data
-glove/
+.DS_Store
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
+# gitignore
+./.gitignore
 # C extensions
 *.so
 
