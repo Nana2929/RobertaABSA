@@ -39,7 +39,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     print(args)
 
-    model_type, dataset = args.matrix_folder.split("/")
+    model_type, dataset, split = args.matrix_folder.split("/")
     matrix_folder = "save_matrix/" + args.matrix_folder
     os.makedirs(os.path.join("asgcn2", model_type), exist_ok=True)
     os.makedirs(os.path.join("asgcn2", model_type, args.layers), exist_ok=True)
@@ -53,8 +53,9 @@ if __name__ == "__main__":
         ps = fn[:-4].split("-")
         layer = ps[-1]
         if layer == args.layers:
-            split = ps[-2]  # train or test
-            split = split[0].capitalize() + split[1:].lower()
+            # split = ps[-2]  # train or test
+            # split = split[0].capitalize() + split[1:].lower()
+            print(f'Processing {split}...')
             args.matrix = os.path.join(matrix_folder, fn)
             if split == "Test":
                 gold_fn = "{}_{}_Gold.xml.seg".format(dataset, split)
@@ -63,8 +64,10 @@ if __name__ == "__main__":
                 gold_fn = "{}_{}.xml.seg".format(dataset, split)
                 graph_fn = "{}_{}.xml.seg.graph".format(dataset, split)
             trees, results = dep_parsing_new(args)
+
             dep_eval(trees, results)
             print(f'Processing {fn}...')
+            tokens = []
             with open(
                 os.path.join(save_folder, gold_fn), "w", encoding="utf8"
             ) as f1, open(os.path.join(save_folder, graph_fn), "wb") as f2:
@@ -105,4 +108,8 @@ if __name__ == "__main__":
                         f1.write("{}\n".format(mapping[aspect["polarity"]]))
                         adj_matrixes[len(adj_matrixes) * 3] = adj_matrix
                 pickle.dump(adj_matrixes, f2)
-    np.save(f'/home/nanaeilish/projects/Github/RobertaABSA/Perturbed-Masking/DepTrees/trees-{args.layers}.npy', trees)
+            treepath= f"/home/nanaeilish/projects/Github/RobertaABSA/Perturbed-Masking/DepTrees/{split}-{args.layers}.npy"
+
+            print(f'saving into {treepath}')
+            np.save(treepath, trees)
+
