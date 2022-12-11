@@ -45,13 +45,15 @@ class Inferer:
                  self.tokenizer = Tokenizer(word2idx=word2idx)
         else:
             print("reading {0} dataset...".format(opt.dataset))
-            
-            text = ABSADatesetReader.__read_text__([fname[opt.dataset]['train'], fname[opt.dataset]['test']])
+
+            text = ABSADatesetReader.__read_text__(
+                [fname[opt.dataset]['train'], fname[opt.dataset]['test']])
             self.tokenizer = Tokenizer()
             self.tokenizer.fit_on_text(text)
             with open(opt.dataset+'_word2idx.pkl', 'wb') as f:
-                 pickle.dump(self.tokenizer.word2idx, f)
-        embedding_matrix = build_embedding_matrix(self.tokenizer.word2idx, opt.embed_dim, opt.dataset)
+                pickle.dump(self.tokenizer.word2idx, f)
+        embedding_matrix = build_embedding_matrix(
+            self.tokenizer.word2idx, opt.embed_dim, opt.dataset)
         self.model = opt.model_class(embedding_matrix, opt).to(opt.device)
         print('loading model {0} ...'.format(opt.model_name))
         self.model.load_state_dict(torch.load(opt.state_dict_path))
@@ -63,18 +65,21 @@ class Inferer:
     def evaluate(self, raw_text, aspect):
         text_seqs = [self.tokenizer.text_to_sequence(raw_text.lower())]
         aspect_seqs = [self.tokenizer.text_to_sequence(aspect.lower())]
-        left_seqs = [self.tokenizer.text_to_sequence(raw_text.lower().split(aspect.lower())[0])]
+        left_seqs = [self.tokenizer.text_to_sequence(
+            raw_text.lower().split(aspect.lower())[0])]
         text_indices = torch.tensor(text_seqs, dtype=torch.int64)
         aspect_indices = torch.tensor(aspect_seqs, dtype=torch.int64)
         left_indices = torch.tensor(left_seqs, dtype=torch.int64)
-        dependency_graph = torch.tensor([dependency_adj_matrix(raw_text.lower())])
+        dependency_graph = torch.tensor(
+            [dependency_adj_matrix(raw_text.lower())])
         data = {
-            'text_indices': text_indices, 
+            'text_indices': text_indices,
             'aspect_indices': aspect_indices,
-            'left_indices': left_indices, 
+            'left_indices': left_indices,
             'dependency_graph': dependency_graph
         }
-        t_inputs = [data[col].to(opt.device) for col in self.opt.inputs_cols]
+        t_inputs = [data[col].to(self.opt.device)
+                    for col in self.opt.inputs_cols]
         t_outputs = self.model(t_inputs)
 
         t_probs = F.softmax(t_outputs, dim=-1).cpu().numpy()
@@ -83,12 +88,14 @@ class Inferer:
 
 
 if __name__ == '__main__':
-    dataset = 'rest14'
+    dataset = 'Laptop'
+    layer = 11
+    layer = str(layer)
     # set your trained models here
     model_state_dict_paths = {
-        'lstm': 'state_dict/lstm_'+dataset+'.pkl',
-        'ascnn': 'state_dict/ascnn_'+dataset+'.pkl',
-        'asgcn': 'state_dict/asgcn_'+dataset+'.pkl',
+        'lstm': 'state_dict/lstm_'+dataset+'_'+layer+'.pkl',
+        'ascnn': 'state_dict/ascnn_'+dataset+'_'+layer+'.pkl',
+        'asgcn': 'state_dict/asgcn_'+dataset+'_'+layer+'.pkl',
     }
     model_classes = {
         'lstm': LSTM,
@@ -110,9 +117,10 @@ if __name__ == '__main__':
     opt.embed_dim = 300
     opt.hidden_dim = 300
     opt.polarities_dim = 3
+    opt.dropout = 0.5  # need to be the same as in training
     opt.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
     inf = Inferer(opt)
     t_probs = inf.evaluate('The staff should be a bit more friendly .', 'staff')
-    print(t_probs.argmax(axis=-1)[0])
-
+    mapping = {0: 'negative', 1: 'neutral', 2: 'positive'}
+    pred_class = t_probs.argmax(axis=-1)[0]
+    print(f'Predicted Sentiment: {mapping[pred_class]}')
