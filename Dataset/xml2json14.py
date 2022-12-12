@@ -31,7 +31,7 @@ def xml2txt(file_path, predictor):
             example = {}
             sent = sentence.find("text").text
             terms = sentence.find("aspectTerms")
-            if terms is None:  
+            if terms is None:
                 continue
             if terms is not None:
                 sent_list = list(sent)
@@ -45,10 +45,10 @@ def xml2txt(file_path, predictor):
                     assert tidx <= len(sent_list)
                     fidx_list.append(fidx)  # like [22, 36]
                     tidx_list.append(tidx)  # like [31, 57]
-                if len(fidx_list) == 0:  
+                if len(fidx_list) == 0:
                     continue
                 insert_idx = sorted(fidx_list + tidx_list, reverse=True)
-                for idx in insert_idx:  
+                for idx in insert_idx:
                     sent_list.insert(idx, " ")
                 fidx_list = sorted(fidx_list)
                 tidx_list = sorted(tidx_list)
@@ -66,11 +66,11 @@ def xml2txt(file_path, predictor):
                     if t.attrib["polarity"] == "conflict":
                         continue
                     asp = dict()
-                    asp["term"] = [str(i) for i in tk.tokenize(t.attrib["term"])] 
+                    asp["term"] = [str(i) for i in tk.tokenize(t.attrib["term"])]
                     asp["polarity"] = t.attrib["polarity"]
                     assert fidx_list.index(int(t.attrib["from"])) == tidx_list.index(
                         int(t.attrib["to"])
-                    )  
+                    )
                     left_index = (
                         int(t.attrib["from"])
                         + 1
@@ -90,7 +90,8 @@ def xml2txt(file_path, predictor):
         extended_filename = file_path.replace(".xml", "_biaffine_depparsed.json")
         with open(extended_filename, "w") as f:
             json.dump(final_out, f, indent=2)
-    print("done", len(final_out))
+    
+    print(f"done with {len(final_out)} data entries.")
 
 
 def dependencies2format(doc):  # doc.sentences[i]
@@ -113,19 +114,19 @@ def dependencies2format(doc):  # doc.sentences[i]
     dependencies = []
     for idx, item in enumerate(predicted_dependencies):
         dep_tag = item
-        frm = predicted_heads[idx]  
+        frm = predicted_heads[idx]
         to = idx + 1
         dependencies.append(
             [dep_tag, frm, to]
-        )  
+        )
 
     return token, pos, deprel, head, dependencies
 
 
 def get_all_file(path):
     base_dir = path
-    xml2txt(path + "_Test.xml", predictor)
-    xml2txt(path + "_Train.xml", predictor)
+    xml2txt(base_dir + "_Test.xml", predictor)
+    xml2txt(base_dir + "_Train.xml", predictor)
 
 
 predictor = Predictor.from_path(
@@ -134,5 +135,5 @@ predictor = Predictor.from_path(
 
 
 get_all_file(
-    "Dataset/Restaurants"
+    "/home/P76114511/projects/RoBERTaABSA/Dataset/Laptop/Laptop"
 )
