@@ -13,11 +13,20 @@ from data_utils import ABSADatesetReader
 from models import LSTM, ASCNN, ASGCN
 import fitlog
 
-import os
+
 
 fitlog.debug()
 if "p" in os.environ:
     os.environ["CUDA_VISIBLE_DEVICES"] = os.environ["p"]
+
+# setting seed
+seed = 42
+torch.manual_seed(seed)
+torch.cuda.manual_seed(seed)
+torch.cuda.manual_seed_all(seed)
+random.seed(seed)
+torch.backends.cudnn.benchmark = False
+torch.backends.cudnn.deterministic = True
 
 
 class Instructor:
@@ -204,8 +213,16 @@ class Instructor:
             max_test_f1_avg += max_test_f1
             print("#" * 100)
             fitlog.finish()
-        print("max_test_acc_avg:", max_test_acc_avg / repeats)
-        print("max_test_f1_avg:", max_test_f1_avg / repeats)
+
+        max_test_acc_avg = max_test_acc_avg / repeats
+        max_test_f1_avg = max_test_f1_avg / repeats
+        print("max_test_acc_avg:", max_test_acc_avg )
+        print("max_test_f1_avg:", max_test_f1_avg )
+        with open (self.opt.logfile, 'a') as f:
+            f.write(f" =========== {opt.layers} =============\n")
+            f.write(f"max_test_acc_avg: {max_test_acc_avg}\n")
+            f.write(f"max_test_f1_avg: {max_test_f1_avg}\n")
+            print(f'Successfully writing to logfile {self.opt.logfile}')
 
 
 if __name__ == "__main__":
@@ -222,8 +239,11 @@ if __name__ == "__main__":
     parser.add_argument("--embed_dim", default=300, type=int)
     parser.add_argument("--hidden_dim", default=300, type=int)
     parser.add_argument("--dropout", default=0.7, type=float)
+    parser.add_argument("--save", action='store_true')
     # 10/22 add model saving mechanism
-    parser.add_argument("--save")
+    parser.add_argument("--logfile", type=str)
+    # specify which layer to run the training
+    parser.add_argument("--layers", type=int, default =-1)
 
     opt = parser.parse_args()  # opt--->all args
     # if opt.dataset.endswith("/"):
@@ -286,6 +306,7 @@ if __name__ == "__main__":
     opt.optimizer = optimizers[opt.optimizer]
     opt.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     opt.refresh = False
+
 
     if opt.save:
         os.makedirs("./state_dict/", exist_ok=True)

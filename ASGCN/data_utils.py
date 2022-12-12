@@ -178,6 +178,7 @@ class ABSADatesetReader:
             fname = fname[dataset]
         else:
             fns = os.listdir(dataset)
+            print(fns)
             train_fp = os.path.join(
                 dataset, [fn for fn in fns if "Train" in fn and fn.endswith("seg")][0]
             )
