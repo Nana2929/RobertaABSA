@@ -78,13 +78,18 @@ if __name__ == "__main__":
     output_dir = os.path.join(output_dir, dataset_name)
     os.makedirs(output_dir, exist_ok=True)
     print("Folder is {}".format(output_dir))
-    args.output_file = output_dir + "/{}-{}.pkl"
     # save_matrix/{model_type}{trained dataset or ""}{""}/{dataset}/{split}-{layer}.pkl
 
     data_bundle = DataLoader().load(args.dataset)
     for name in ["train", "test"]:
         args.data_split = name
+        print('dataset split:', name)
+        Name = name.capitalize()
+        split_dir = os.path.join(output_dir, Name)
+        os.makedirs(split_dir, exist_ok=True)
+        args.output_file = os.path.join(split_dir, "{}-{}.pkl")
         ds = data_bundle.get_dataset(name)
+        print(ds)
         dataset = []
         for ins in ds:
             line = [

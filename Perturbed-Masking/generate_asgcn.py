@@ -18,7 +18,7 @@ if __name__ == "__main__":
         "--matrix_folder", default="bert/Restaurants", help="bert/Restaurants"
     )
     parser.add_argument("--layers", default="12")
-
+    parser.add_argument("--project_dir", default="/home/nanaeilish/projects/Github/RobertaABSA/")
     parser.add_argument("--subword", default="avg", choices=["first", "avg", "max"])
     parser.add_argument("--root", default="non-gold", help="use gold root as init")
     parser.add_argument(
@@ -107,11 +107,12 @@ if __name__ == "__main__":
                         )
                         f1.write(" ".join(tokens) + "\n")
                         f1.write(" ".join(terms) + "\n")
+                        print(aspect, type(aspect["polarity"]))
                         f1.write("{}\n".format(mapping[aspect["polarity"]]))
                         adj_matrixes[len(adj_matrixes) * 3] = adj_matrix
                 pickle.dump(adj_matrixes, f2)
-            treepath= f"/home/nanaeilish/projects/Github/RobertaABSA/Perturbed-Masking/DepTrees/{split}-{args.layers}.npy"
+            treepath = f"{args.project_dir}/Perturbed-Masking/DepTrees/{split}-{args.layers}.npy"
 
-            print(f'saving into {treepath}')
+            print(f'Saving into {treepath}')
             np.save(treepath, trees)
 
