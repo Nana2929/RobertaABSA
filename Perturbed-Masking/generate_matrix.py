@@ -46,12 +46,12 @@ if __name__ == "__main__":
         args.model_path = args.model_path[:-1]
 
     if "/" in args.model_path:
+        print(args.model_path)
         assert os.path.exists(args.model_path)
         model_type = os.path.basename(args.model_path)
         model_type = model_type.split("-")[0]
     else:
         model_type = args.model_path  # PTMS
-    print(model_type)
     model_class, tokenizer_class, pretrained_weights = MODEL_CLASSES[model_type]
     trained_on = ""
     if "/" in args.model_path:
@@ -62,6 +62,9 @@ if __name__ == "__main__":
             trained_on = parts[-1]
             msg = ""
         elif len(parts) == 3:  # "roberta-Laptop-{msg}"
+            trained_on = parts[-2]
+            msg = parts[-1]
+        elif len(parts) == 4:  # "roberta-en-Laptop-{msg}"
             trained_on = parts[-2]
             msg = parts[-1]
         else:

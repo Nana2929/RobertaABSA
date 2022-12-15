@@ -4,7 +4,8 @@ import os
 import pickle
 import numpy as np
 
-
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print('project root:', project_root)
 def load_word_vec(path, word2idx=None, embed_dim=300):
     fin = open(path, "r", encoding="utf-8", newline="\n", errors="ignore")
     word_vec = {}
@@ -31,13 +32,13 @@ def build_embedding_matrix(word2idx, embed_dim, type, refresh=0):
             -1 / np.sqrt(embed_dim), 1 / np.sqrt(embed_dim), (1, embed_dim)
         )
         if type == "fr":
-            fname = "../glove/word2vec_french.txt"
+            fname = f"{project_root}/glove/word2vec_french.txt"
         elif type == "dutch":
-            fname = "../glove/word2vec_dutch.txt"
+            fname = f"{project_root}/glove/word2vec_dutch.txt"
         elif type == "sp":
-            fname = "../glove/word2vec_spanish.txt"
+            fname = f"{project_root}/glove/word2vec_spanish.txt"
         else:
-            fname = "../glove/glove.840B.300d.txt"
+            fname = f"{project_root}/glove/glove.840B.300d.txt"
         word_vec = load_word_vec(fname, word2idx=word2idx)
         print("building embedding_matrix:", embedding_matrix_file_name)
         for word, i in word2idx.items():

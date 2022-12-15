@@ -26,7 +26,7 @@ else
     python3 Perturbed-Masking/generate_matrix.py --model_path=$ptm --data_dir=$datadir --dataset=$dset
 fi
 echo == training ALSC ==
-for layer in {0..13}
+for layer in {0..12}
 do
     echo == training w/ $layer layer ==
     python3 Perturbed-Masking/generate_asgcn.py --layers=$layer --matrix_folder="$ptm/$dset/Train" --project_dir="./"
