@@ -1,0 +1,3832 @@
+[
+  {
+    "sentence": " Face Unlock  doesnt work.",
+    "token": [
+      "Face",
+      "Unlock",
+      "does",
+      "nt",
+      "work",
+      "."
+    ],
+    "pos": [
+      "PROPN",
+      "PROPN",
+      "AUX",
+      "PART",
+      "VERB",
+      "PUNCT"
+    ],
+    "deprel": [
+      "dep",
+      "nsubj",
+      "root",
+      "dep",
+      "dep",
+      "punct"
+    ],
+    "head": [
+      2,
+      3,
+      0,
+      3,
+      4,
+      3
+    ],
+    "dependencies": [
+      [
+        "dep",
+        2,
+        1
+      ],
+      [
+        "nsubj",
+        3,
+        2
+      ],
+      [
+        "root",
+        0,
+        3
+      ],
+      [
+        "dep",
+        3,
+        4
+      ],
+      [
+        "dep",
+        4,
+        5
+      ],
+      [
+        "punct",
+        3,
+        6
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Face",
+          "Unlock"
+        ],
+        "polarity": "negative",
+        "from": 0,
+        "to": 2
+      }
+    ]
+  },
+  {
+    "sentence": "Bug P7P   Screenshot capture  more option doesnt work",
+    "token": [
+      "Bug",
+      "P7P",
+      "Screenshot",
+      "capture",
+      "more",
+      "option",
+      "does",
+      "nt",
+      "work"
+    ],
+    "pos": [
+      "NOUN",
+      "NOUN",
+      "PROPN",
+      "NOUN",
+      "ADJ",
+      "NOUN",
+      "AUX",
+      "PART",
+      "VERB"
+    ],
+    "deprel": [
+      "nn",
+      "nn",
+      "root",
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "amod",
+      "amod"
+    ],
+    "head": [
+      3,
+      3,
+      0,
+      3,
+      6,
+      4,
+      6,
+      7,
+      7
+    ],
+    "dependencies": [
+      [
+        "nn",
+        3,
+        1
+      ],
+      [
+        "nn",
+        3,
+        2
+      ],
+      [
+        "root",
+        0,
+        3
+      ],
+      [
+        "dep",
+        3,
+        4
+      ],
+      [
+        "dep",
+        6,
+        5
+      ],
+      [
+        "dep",
+        4,
+        6
+      ],
+      [
+        "dep",
+        6,
+        7
+      ],
+      [
+        "amod",
+        7,
+        8
+      ],
+      [
+        "amod",
+        7,
+        9
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Screenshot",
+          "capture"
+        ],
+        "polarity": "negative",
+        "from": 2,
+        "to": 4
+      }
+    ]
+  },
+  {
+    "sentence": "Instagram post photo wont  back up  in Google Photos.",
+    "token": [
+      "Instagram",
+      "post",
+      "photo",
+      "wo",
+      "nt",
+      "back",
+      "up",
+      "in",
+      "Google",
+      "Photos",
+      "."
+    ],
+    "pos": [
+      "PROPN",
+      "NOUN",
+      "NOUN",
+      "AUX",
+      "PART",
+      "ADV",
+      "ADP",
+      "ADP",
+      "PROPN",
+      "NOUN",
+      "PUNCT"
+    ],
+    "deprel": [
+      "amod",
+      "amod",
+      "nsubj",
+      "root",
+      "dep",
+      "dep",
+      "dep",
+      "prep",
+      "dep",
+      "dep",
+      "amod"
+    ],
+    "head": [
+      3,
+      3,
+      4,
+      0,
+      4,
+      5,
+      6,
+      6,
+      10,
+      8,
+      9
+    ],
+    "dependencies": [
+      [
+        "amod",
+        3,
+        1
+      ],
+      [
+        "amod",
+        3,
+        2
+      ],
+      [
+        "nsubj",
+        4,
+        3
+      ],
+      [
+        "root",
+        0,
+        4
+      ],
+      [
+        "dep",
+        4,
+        5
+      ],
+      [
+        "dep",
+        5,
+        6
+      ],
+      [
+        "dep",
+        6,
+        7
+      ],
+      [
+        "prep",
+        6,
+        8
+      ],
+      [
+        "dep",
+        10,
+        9
+      ],
+      [
+        "dep",
+        8,
+        10
+      ],
+      [
+        "amod",
+        9,
+        11
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "back",
+          "up"
+        ],
+        "polarity": "negative",
+        "from": 5,
+        "to": 7
+      }
+    ]
+  },
+  {
+    "sentence": " macro mode  always enabling",
+    "token": [
+      "macro",
+      "mode",
+      "always",
+      "enabling"
+    ],
+    "pos": [
+      "ADJ",
+      "NOUN",
+      "ADV",
+      "VERB"
+    ],
+    "deprel": [
+      "nn",
+      "nsubj",
+      "advmod",
+      "root"
+    ],
+    "head": [
+      2,
+      4,
+      4,
+      0
+    ],
+    "dependencies": [
+      [
+        "nn",
+        2,
+        1
+      ],
+      [
+        "nsubj",
+        4,
+        2
+      ],
+      [
+        "advmod",
+        4,
+        3
+      ],
+      [
+        "root",
+        0,
+        4
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "macro",
+          "mode"
+        ],
+        "polarity": "neutral",
+        "from": 0,
+        "to": 2
+      }
+    ]
+  },
+  {
+    "sentence": " Google Support  is Hopeless",
+    "token": [
+      "Google",
+      "Support",
+      "is",
+      "Hopeless"
+    ],
+    "pos": [
+      "PROPN",
+      "PROPN",
+      "AUX",
+      "ADJ"
+    ],
+    "deprel": [
+      "nsubj",
+      "nsubj",
+      "cop",
+      "root"
+    ],
+    "head": [
+      4,
+      4,
+      4,
+      0
+    ],
+    "dependencies": [
+      [
+        "nsubj",
+        4,
+        1
+      ],
+      [
+        "nsubj",
+        4,
+        2
+      ],
+      [
+        "cop",
+        4,
+        3
+      ],
+      [
+        "root",
+        0,
+        4
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Google",
+          "Support"
+        ],
+        "polarity": "negative",
+        "from": 0,
+        "to": 2
+      }
+    ]
+  },
+  {
+    "sentence": "Dropped Pixel 4  Black Screened ",
+    "token": [
+      "Dropped",
+      "Pixel",
+      "4",
+      "Black",
+      "Screened"
+    ],
+    "pos": [
+      "PROPN",
+      "PROPN",
+      "NUM",
+      "PROPN",
+      "PROPN"
+    ],
+    "deprel": [
+      "dep",
+      "root",
+      "dep",
+      "nn",
+      "dep"
+    ],
+    "head": [
+      2,
+      0,
+      2,
+      2,
+      3
+    ],
+    "dependencies": [
+      [
+        "dep",
+        2,
+        1
+      ],
+      [
+        "root",
+        0,
+        2
+      ],
+      [
+        "dep",
+        2,
+        3
+      ],
+      [
+        "nn",
+        2,
+        4
+      ],
+      [
+        "dep",
+        3,
+        5
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Black",
+          "Screened"
+        ],
+        "polarity": "negative",
+        "from": 3,
+        "to": 5
+      }
+    ]
+  },
+  {
+    "sentence": "How to use the  telephoto lens ?",
+    "token": [
+      "How",
+      "to",
+      "use",
+      "the",
+      "telephoto",
+      "lens",
+      "?"
+    ],
+    "pos": [
+      "SCONJ",
+      "PART",
+      "VERB",
+      "DET",
+      "NOUN",
+      "NOUN",
+      "PUNCT"
+    ],
+    "deprel": [
+      "root",
+      "aux",
+      "dep",
+      "det",
+      "dep",
+      "dobj",
+      "discourse"
+    ],
+    "head": [
+      0,
+      3,
+      1,
+      6,
+      6,
+      3,
+      3
+    ],
+    "dependencies": [
+      [
+        "root",
+        0,
+        1
+      ],
+      [
+        "aux",
+        3,
+        2
+      ],
+      [
+        "dep",
+        1,
+        3
+      ],
+      [
+        "det",
+        6,
+        4
+      ],
+      [
+        "dep",
+        6,
+        5
+      ],
+      [
+        "dobj",
+        3,
+        6
+      ],
+      [
+        "discourse",
+        3,
+        7
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "telephoto",
+          "lens"
+        ],
+        "polarity": "neutral",
+        "from": 4,
+        "to": 6
+      }
+    ]
+  },
+  {
+    "sentence": "Any Way I can change the  lock screen ?",
+    "token": [
+      "Any",
+      "Way",
+      "I",
+      "can",
+      "change",
+      "the",
+      "lock",
+      "screen",
+      "?"
+    ],
+    "pos": [
+      "DET",
+      "NOUN",
+      "PRON",
+      "AUX",
+      "VERB",
+      "DET",
+      "NOUN",
+      "NOUN",
+      "PUNCT"
+    ],
+    "deprel": [
+      "det",
+      "advmod",
+      "nsubj",
+      "dep",
+      "root",
+      "dep",
+      "dep",
+      "dep",
+      "discourse"
+    ],
+    "head": [
+      3,
+      3,
+      5,
+      5,
+      0,
+      7,
+      8,
+      5,
+      5
+    ],
+    "dependencies": [
+      [
+        "det",
+        3,
+        1
+      ],
+      [
+        "advmod",
+        3,
+        2
+      ],
+      [
+        "nsubj",
+        5,
+        3
+      ],
+      [
+        "dep",
+        5,
+        4
+      ],
+      [
+        "root",
+        0,
+        5
+      ],
+      [
+        "dep",
+        7,
+        6
+      ],
+      [
+        "dep",
+        8,
+        7
+      ],
+      [
+        "dep",
+        5,
+        8
+      ],
+      [
+        "discourse",
+        5,
+        9
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "lock",
+          "screen"
+        ],
+        "polarity": "neutral",
+        "from": 6,
+        "to": 8
+      }
+    ]
+  },
+  {
+    "sentence": "Will I be able to use  region specific features  like call screening in pixel phones if I move to the country where it is supported even if I buy it other countries like India, Sweden, Singapore etc",
+    "token": [
+      "Will",
+      "I",
+      "be",
+      "able",
+      "to",
+      "use",
+      "region",
+      "specific",
+      "features",
+      "like",
+      "call",
+      "screening",
+      "in",
+      "pixel",
+      "phones",
+      "if",
+      "I",
+      "move",
+      "to",
+      "the",
+      "country",
+      "where",
+      "it",
+      "is",
+      "supported",
+      "even",
+      "if",
+      "I",
+      "buy",
+      "it",
+      "other",
+      "countries",
+      "like",
+      "India",
+      ",",
+      "Sweden",
+      ",",
+      "Singapore",
+      "etc"
+    ],
+    "pos": [
+      "AUX",
+      "PRON",
+      "AUX",
+      "ADJ",
+      "PART",
+      "VERB",
+      "NOUN",
+      "ADJ",
+      "NOUN",
+      "INTJ",
+      "VERB",
+      "VERB",
+      "ADP",
+      "PROPN",
+      "NOUN",
+      "SCONJ",
+      "PRON",
+      "VERB",
+      "ADP",
+      "DET",
+      "NOUN",
+      "SCONJ",
+      "PRON",
+      "AUX",
+      "VERB",
+      "ADV",
+      "SCONJ",
+      "PRON",
+      "VERB",
+      "PRON",
+      "ADJ",
+      "NOUN",
+      "ADP",
+      "PROPN",
+      "PUNCT",
+      "PROPN",
+      "PUNCT",
+      "PROPN",
+      "X"
+    ],
+    "deprel": [
+      "nsubj",
+      "nsubj",
+      "auxpass",
+      "root",
+      "aux",
+      "xcomp",
+      "dep",
+      "dep",
+      "dep",
+      "prep",
+      "dep",
+      "dep",
+      "prep",
+      "dep",
+      "pobj",
+      "mark",
+      "nsubj",
+      "dep",
+      "prep",
+      "dep",
+      "pobj",
+      "dep",
+      "nsubj",
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "nsubj",
+      "dep",
+      "dep",
+      "amod",
+      "dep",
+      "amod",
+      "pobj",
+      "amod",
+      "dep",
+      "dep",
+      "dep",
+      "dep"
+    ],
+    "head": [
+      4,
+      4,
+      4,
+      0,
+      6,
+      4,
+      6,
+      6,
+      8,
+      8,
+      10,
+      10,
+      12,
+      15,
+      13,
+      18,
+      18,
+      11,
+      18,
+      21,
+      19,
+      21,
+      25,
+      25,
+      4,
+      25,
+      29,
+      29,
+      26,
+      29,
+      32,
+      29,
+      32,
+      33,
+      34,
+      34,
+      36,
+      36,
+      36
+    ],
+    "dependencies": [
+      [
+        "nsubj",
+        4,
+        1
+      ],
+      [
+        "nsubj",
+        4,
+        2
+      ],
+      [
+        "auxpass",
+        4,
+        3
+      ],
+      [
+        "root",
+        0,
+        4
+      ],
+      [
+        "aux",
+        6,
+        5
+      ],
+      [
+        "xcomp",
+        4,
+        6
+      ],
+      [
+        "dep",
+        6,
+        7
+      ],
+      [
+        "dep",
+        6,
+        8
+      ],
+      [
+        "dep",
+        8,
+        9
+      ],
+      [
+        "prep",
+        8,
+        10
+      ],
+      [
+        "dep",
+        10,
+        11
+      ],
+      [
+        "dep",
+        10,
+        12
+      ],
+      [
+        "prep",
+        12,
+        13
+      ],
+      [
+        "dep",
+        15,
+        14
+      ],
+      [
+        "pobj",
+        13,
+        15
+      ],
+      [
+        "mark",
+        18,
+        16
+      ],
+      [
+        "nsubj",
+        18,
+        17
+      ],
+      [
+        "dep",
+        11,
+        18
+      ],
+      [
+        "prep",
+        18,
+        19
+      ],
+      [
+        "dep",
+        21,
+        20
+      ],
+      [
+        "pobj",
+        19,
+        21
+      ],
+      [
+        "dep",
+        21,
+        22
+      ],
+      [
+        "nsubj",
+        25,
+        23
+      ],
+      [
+        "dep",
+        25,
+        24
+      ],
+      [
+        "dep",
+        4,
+        25
+      ],
+      [
+        "dep",
+        25,
+        26
+      ],
+      [
+        "dep",
+        29,
+        27
+      ],
+      [
+        "nsubj",
+        29,
+        28
+      ],
+      [
+        "dep",
+        26,
+        29
+      ],
+      [
+        "dep",
+        29,
+        30
+      ],
+      [
+        "amod",
+        32,
+        31
+      ],
+      [
+        "dep",
+        29,
+        32
+      ],
+      [
+        "amod",
+        32,
+        33
+      ],
+      [
+        "pobj",
+        33,
+        34
+      ],
+      [
+        "amod",
+        34,
+        35
+      ],
+      [
+        "dep",
+        34,
+        36
+      ],
+      [
+        "dep",
+        36,
+        37
+      ],
+      [
+        "dep",
+        36,
+        38
+      ],
+      [
+        "dep",
+        36,
+        39
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "region",
+          "specific",
+          "features"
+        ],
+        "polarity": "neutral",
+        "from": 6,
+        "to": 9
+      }
+    ]
+  },
+  {
+    "sentence": "Pixel 3 not  turning on or charging ",
+    "token": [
+      "Pixel",
+      "3",
+      "not",
+      "turning",
+      "on",
+      "or",
+      "charging"
+    ],
+    "pos": [
+      "PROPN",
+      "NUM",
+      "PART",
+      "VERB",
+      "ADP",
+      "CCONJ",
+      "VERB"
+    ],
+    "deprel": [
+      "nsubj",
+      "root",
+      "neg",
+      "dep",
+      "advmod",
+      "cc",
+      "conj"
+    ],
+    "head": [
+      2,
+      0,
+      4,
+      2,
+      4,
+      5,
+      4
+    ],
+    "dependencies": [
+      [
+        "nsubj",
+        2,
+        1
+      ],
+      [
+        "root",
+        0,
+        2
+      ],
+      [
+        "neg",
+        4,
+        3
+      ],
+      [
+        "dep",
+        2,
+        4
+      ],
+      [
+        "advmod",
+        4,
+        5
+      ],
+      [
+        "cc",
+        5,
+        6
+      ],
+      [
+        "conj",
+        4,
+        7
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "turning",
+          "on",
+          "or",
+          "charging"
+        ],
+        "polarity": "negative",
+        "from": 3,
+        "to": 7
+      }
+    ]
+  },
+  {
+    "sentence": "Google Pixel 7 Pro constantly  warm  while door dashing.",
+    "token": [
+      "Google",
+      "Pixel",
+      "7",
+      "Pro",
+      "constantly",
+      "warm",
+      "while",
+      "door",
+      "dashing",
+      "."
+    ],
+    "pos": [
+      "PROPN",
+      "PROPN",
+      "PROPN",
+      "PROPN",
+      "ADV",
+      "ADJ",
+      "SCONJ",
+      "NOUN",
+      "NOUN",
+      "PUNCT"
+    ],
+    "deprel": [
+      "dep",
+      "root",
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "advmod",
+      "dep",
+      "advmod"
+    ],
+    "head": [
+      2,
+      0,
+      2,
+      3,
+      6,
+      3,
+      6,
+      9,
+      6,
+      9
+    ],
+    "dependencies": [
+      [
+        "dep",
+        2,
+        1
+      ],
+      [
+        "root",
+        0,
+        2
+      ],
+      [
+        "dep",
+        2,
+        3
+      ],
+      [
+        "dep",
+        3,
+        4
+      ],
+      [
+        "dep",
+        6,
+        5
+      ],
+      [
+        "dep",
+        3,
+        6
+      ],
+      [
+        "dep",
+        6,
+        7
+      ],
+      [
+        "advmod",
+        9,
+        8
+      ],
+      [
+        "dep",
+        6,
+        9
+      ],
+      [
+        "advmod",
+        9,
+        10
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "warm"
+        ],
+        "polarity": "negative",
+        "from": 5,
+        "to": 6
+      }
+    ]
+  },
+  {
+    "sentence": "Adaptive  charging  not working",
+    "token": [
+      "Adaptive",
+      "charging",
+      "not",
+      "working"
+    ],
+    "pos": [
+      "PROPN",
+      "VERB",
+      "PART",
+      "VERB"
+    ],
+    "deprel": [
+      "root",
+      "dep",
+      "neg",
+      "advmod"
+    ],
+    "head": [
+      0,
+      1,
+      4,
+      2
+    ],
+    "dependencies": [
+      [
+        "root",
+        0,
+        1
+      ],
+      [
+        "dep",
+        1,
+        2
+      ],
+      [
+        "neg",
+        4,
+        3
+      ],
+      [
+        "advmod",
+        2,
+        4
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "charging"
+        ],
+        "polarity": "neutral",
+        "from": 1,
+        "to": 2
+      }
+    ]
+  },
+  {
+    "sentence": " Charging  issues with Pixel6",
+    "token": [
+      "Charging",
+      "issues",
+      "with",
+      "Pixel6"
+    ],
+    "pos": [
+      "VERB",
+      "NOUN",
+      "ADP",
+      "PROPN"
+    ],
+    "deprel": [
+      "root",
+      "amod",
+      "prep",
+      "pobj"
+    ],
+    "head": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "dependencies": [
+      [
+        "root",
+        0,
+        1
+      ],
+      [
+        "amod",
+        1,
+        2
+      ],
+      [
+        "prep",
+        2,
+        3
+      ],
+      [
+        "pobj",
+        3,
+        4
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Charging"
+        ],
+        "polarity": "negative",
+        "from": 0,
+        "to": 1
+      }
+    ]
+  },
+  {
+    "sentence": "My pixel seems to randomly  delete apps  without asking",
+    "token": [
+      "My",
+      "pixel",
+      "seems",
+      "to",
+      "randomly",
+      "delete",
+      "apps",
+      "without",
+      "asking"
+    ],
+    "pos": [
+      "PRON",
+      "NOUN",
+      "VERB",
+      "PART",
+      "VERB",
+      "ADJ",
+      "NOUN",
+      "ADP",
+      "VERB"
+    ],
+    "deprel": [
+      "nn",
+      "nsubj",
+      "dep",
+      "root",
+      "dep",
+      "dep",
+      "pobj",
+      "prep",
+      "pcomp"
+    ],
+    "head": [
+      2,
+      4,
+      4,
+      0,
+      4,
+      7,
+      4,
+      4,
+      8
+    ],
+    "dependencies": [
+      [
+        "nn",
+        2,
+        1
+      ],
+      [
+        "nsubj",
+        4,
+        2
+      ],
+      [
+        "dep",
+        4,
+        3
+      ],
+      [
+        "root",
+        0,
+        4
+      ],
+      [
+        "dep",
+        4,
+        5
+      ],
+      [
+        "dep",
+        7,
+        6
+      ],
+      [
+        "pobj",
+        4,
+        7
+      ],
+      [
+        "prep",
+        4,
+        8
+      ],
+      [
+        "pcomp",
+        8,
+        9
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "delete",
+          "apps"
+        ],
+        "polarity": "negative",
+        "from": 5,
+        "to": 7
+      }
+    ]
+  },
+  {
+    "sentence": "Speakerphone randomly turning on  at beginning of call .",
+    "token": [
+      "Speakerphone",
+      "randomly",
+      "turning",
+      "on",
+      "at",
+      "beginning",
+      "of",
+      "call",
+      "."
+    ],
+    "pos": [
+      "PROPN",
+      "ADV",
+      "VERB",
+      "ADP",
+      "ADP",
+      "NOUN",
+      "ADP",
+      "NOUN",
+      "PUNCT"
+    ],
+    "deprel": [
+      "root",
+      "dep",
+      "dep",
+      "prep",
+      "advmod",
+      "dep",
+      "prep",
+      "pobj",
+      "pobj"
+    ],
+    "head": [
+      0,
+      1,
+      2,
+      3,
+      3,
+      3,
+      6,
+      7,
+      7
+    ],
+    "dependencies": [
+      [
+        "root",
+        0,
+        1
+      ],
+      [
+        "dep",
+        1,
+        2
+      ],
+      [
+        "dep",
+        2,
+        3
+      ],
+      [
+        "prep",
+        3,
+        4
+      ],
+      [
+        "advmod",
+        3,
+        5
+      ],
+      [
+        "dep",
+        3,
+        6
+      ],
+      [
+        "prep",
+        6,
+        7
+      ],
+      [
+        "pobj",
+        7,
+        8
+      ],
+      [
+        "pobj",
+        7,
+        9
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "at",
+          "beginning",
+          "of",
+          "call"
+        ],
+        "polarity": "negative",
+        "from": 4,
+        "to": 8
+      }
+    ]
+  },
+  {
+    "sentence": "Is there a  mirror option  for the back camera of pixel 6?",
+    "token": [
+      "Is",
+      "there",
+      "a",
+      "mirror",
+      "option",
+      "for",
+      "the",
+      "back",
+      "camera",
+      "of",
+      "pixel",
+      "6",
+      "?"
+    ],
+    "pos": [
+      "AUX",
+      "PRON",
+      "DET",
+      "NOUN",
+      "NOUN",
+      "ADP",
+      "DET",
+      "ADJ",
+      "NOUN",
+      "ADP",
+      "NOUN",
+      "NUM",
+      "PUNCT"
+    ],
+    "deprel": [
+      "root",
+      "nsubj",
+      "nn",
+      "nsubj",
+      "dep",
+      "prep",
+      "dep",
+      "advmod",
+      "pobj",
+      "prep",
+      "pobj",
+      "amod",
+      "discourse"
+    ],
+    "head": [
+      0,
+      1,
+      5,
+      5,
+      1,
+      5,
+      9,
+      9,
+      6,
+      9,
+      10,
+      11,
+      5
+    ],
+    "dependencies": [
+      [
+        "root",
+        0,
+        1
+      ],
+      [
+        "nsubj",
+        1,
+        2
+      ],
+      [
+        "nn",
+        5,
+        3
+      ],
+      [
+        "nsubj",
+        5,
+        4
+      ],
+      [
+        "dep",
+        1,
+        5
+      ],
+      [
+        "prep",
+        5,
+        6
+      ],
+      [
+        "dep",
+        9,
+        7
+      ],
+      [
+        "advmod",
+        9,
+        8
+      ],
+      [
+        "pobj",
+        6,
+        9
+      ],
+      [
+        "prep",
+        9,
+        10
+      ],
+      [
+        "pobj",
+        10,
+        11
+      ],
+      [
+        "amod",
+        11,
+        12
+      ],
+      [
+        "discourse",
+        5,
+        13
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "mirror",
+          "option"
+        ],
+        "polarity": "neutral",
+        "from": 3,
+        "to": 5
+      }
+    ]
+  },
+  {
+    "sentence": "Pixel 4  battery  case",
+    "token": [
+      "Pixel",
+      "4",
+      "battery",
+      "case"
+    ],
+    "pos": [
+      "PROPN",
+      "NUM",
+      "NOUN",
+      "NOUN"
+    ],
+    "deprel": [
+      "amod",
+      "dep",
+      "dep",
+      "root"
+    ],
+    "head": [
+      4,
+      4,
+      4,
+      0
+    ],
+    "dependencies": [
+      [
+        "amod",
+        4,
+        1
+      ],
+      [
+        "dep",
+        4,
+        2
+      ],
+      [
+        "dep",
+        4,
+        3
+      ],
+      [
+        "root",
+        0,
+        4
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "battery"
+        ],
+        "polarity": "neutral",
+        "from": 2,
+        "to": 3
+      }
+    ]
+  },
+  {
+    "sentence": "SIM, eSIM,  carrier  question",
+    "token": [
+      "SIM",
+      ",",
+      "eSIM",
+      ",",
+      "carrier",
+      "question"
+    ],
+    "pos": [
+      "PROPN",
+      "PUNCT",
+      "PROPN",
+      "PUNCT",
+      "NOUN",
+      "NOUN"
+    ],
+    "deprel": [
+      "nsubj",
+      "prep",
+      "dep",
+      "advmod",
+      "nsubj",
+      "root"
+    ],
+    "head": [
+      6,
+      1,
+      2,
+      1,
+      6,
+      0
+    ],
+    "dependencies": [
+      [
+        "nsubj",
+        6,
+        1
+      ],
+      [
+        "prep",
+        1,
+        2
+      ],
+      [
+        "dep",
+        2,
+        3
+      ],
+      [
+        "advmod",
+        1,
+        4
+      ],
+      [
+        "nsubj",
+        6,
+        5
+      ],
+      [
+        "root",
+        0,
+        6
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "carrier"
+        ],
+        "polarity": "neutral",
+        "from": 4,
+        "to": 5
+      }
+    ]
+  },
+  {
+    "sentence": " 7 Pro USB port  overheated  while unplugged, now no longer works.",
+    "token": [
+      "7",
+      "Pro",
+      "USB",
+      "port",
+      "overheated",
+      "while",
+      "unplugged",
+      ",",
+      "now",
+      "no",
+      "longer",
+      "works",
+      "."
+    ],
+    "pos": [
+      "NUM",
+      "ADJ",
+      "NOUN",
+      "NOUN",
+      "VERB",
+      "NOUN",
+      "VERB",
+      "PUNCT",
+      "ADV",
+      "ADV",
+      "ADV",
+      "VERB",
+      "PUNCT"
+    ],
+    "deprel": [
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "mark",
+      "dep",
+      "advmod",
+      "dep",
+      "advmod",
+      "advmod",
+      "root",
+      "dep"
+    ],
+    "head": [
+      12,
+      1,
+      2,
+      3,
+      4,
+      7,
+      5,
+      7,
+      12,
+      11,
+      12,
+      0,
+      12
+    ],
+    "dependencies": [
+      [
+        "dep",
+        12,
+        1
+      ],
+      [
+        "dep",
+        1,
+        2
+      ],
+      [
+        "dep",
+        2,
+        3
+      ],
+      [
+        "dep",
+        3,
+        4
+      ],
+      [
+        "dep",
+        4,
+        5
+      ],
+      [
+        "mark",
+        7,
+        6
+      ],
+      [
+        "dep",
+        5,
+        7
+      ],
+      [
+        "advmod",
+        7,
+        8
+      ],
+      [
+        "dep",
+        12,
+        9
+      ],
+      [
+        "advmod",
+        11,
+        10
+      ],
+      [
+        "advmod",
+        12,
+        11
+      ],
+      [
+        "root",
+        0,
+        12
+      ],
+      [
+        "dep",
+        12,
+        13
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "7",
+          "Pro",
+          "USB",
+          "port"
+        ],
+        "polarity": "negative",
+        "from": 0,
+        "to": 4
+      }
+    ]
+  },
+  {
+    "sentence": " Power button  not working",
+    "token": [
+      "Power",
+      "button",
+      "not",
+      "working"
+    ],
+    "pos": [
+      "PROPN",
+      "NOUN",
+      "PART",
+      "VERB"
+    ],
+    "deprel": [
+      "amod",
+      "nsubj",
+      "neg",
+      "root"
+    ],
+    "head": [
+      2,
+      4,
+      4,
+      0
+    ],
+    "dependencies": [
+      [
+        "amod",
+        2,
+        1
+      ],
+      [
+        "nsubj",
+        4,
+        2
+      ],
+      [
+        "neg",
+        4,
+        3
+      ],
+      [
+        "root",
+        0,
+        4
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Power",
+          "button"
+        ],
+        "polarity": "negative",
+        "from": 0,
+        "to": 2
+      }
+    ]
+  },
+  {
+    "sentence": "Weird  audio  issue.\nat my wits end.\nPlease help.",
+    "token": [
+      "Weird",
+      "audio",
+      "issue",
+      ".",
+      "at",
+      "my",
+      "wits",
+      "end",
+      ".",
+      "Please",
+      "help",
+      "."
+    ],
+    "pos": [
+      "PROPN",
+      "NOUN",
+      "NOUN",
+      "PUNCT",
+      "ADP",
+      "PRON",
+      "NOUN",
+      "NOUN",
+      "PUNCT",
+      "INTJ",
+      "VERB",
+      "PUNCT"
+    ],
+    "deprel": [
+      "nn",
+      "amod",
+      "root",
+      "dep",
+      "advmod",
+      "dep",
+      "dep",
+      "advmod",
+      "dep",
+      "dep",
+      "dep",
+      "punct"
+    ],
+    "head": [
+      3,
+      3,
+      0,
+      3,
+      3,
+      5,
+      5,
+      5,
+      10,
+      8,
+      10,
+      10
+    ],
+    "dependencies": [
+      [
+        "nn",
+        3,
+        1
+      ],
+      [
+        "amod",
+        3,
+        2
+      ],
+      [
+        "root",
+        0,
+        3
+      ],
+      [
+        "dep",
+        3,
+        4
+      ],
+      [
+        "advmod",
+        3,
+        5
+      ],
+      [
+        "dep",
+        5,
+        6
+      ],
+      [
+        "dep",
+        5,
+        7
+      ],
+      [
+        "advmod",
+        5,
+        8
+      ],
+      [
+        "dep",
+        10,
+        9
+      ],
+      [
+        "dep",
+        8,
+        10
+      ],
+      [
+        "dep",
+        10,
+        11
+      ],
+      [
+        "punct",
+        10,
+        12
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "audio"
+        ],
+        "polarity": "negative",
+        "from": 1,
+        "to": 2
+      }
+    ]
+  },
+  {
+    "sentence": " GPS  Issues on P7 pro",
+    "token": [
+      "GPS",
+      "Issues",
+      "on",
+      "P7",
+      "pro"
+    ],
+    "pos": [
+      "PROPN",
+      "NOUN",
+      "ADP",
+      "PROPN",
+      "NOUN"
+    ],
+    "deprel": [
+      "nsubj",
+      "root",
+      "prep",
+      "dep",
+      "pobj"
+    ],
+    "head": [
+      2,
+      0,
+      2,
+      5,
+      3
+    ],
+    "dependencies": [
+      [
+        "nsubj",
+        2,
+        1
+      ],
+      [
+        "root",
+        0,
+        2
+      ],
+      [
+        "prep",
+        2,
+        3
+      ],
+      [
+        "dep",
+        5,
+        4
+      ],
+      [
+        "pobj",
+        3,
+        5
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "GPS"
+        ],
+        "polarity": "negative",
+        "from": 0,
+        "to": 1
+      }
+    ]
+  },
+  {
+    "sentence": "Is  my battery  draining too quick?\nOver year old Pixel 4.",
+    "token": [
+      "Is",
+      "my",
+      "battery",
+      "draining",
+      "too",
+      "quick",
+      "?",
+      "Over",
+      "year",
+      "old",
+      "Pixel",
+      "4",
+      "."
+    ],
+    "pos": [
+      "AUX",
+      "PRON",
+      "NOUN",
+      "VERB",
+      "ADV",
+      "ADJ",
+      "PUNCT",
+      "ADP",
+      "NOUN",
+      "ADJ",
+      "PROPN",
+      "NUM",
+      "PUNCT"
+    ],
+    "deprel": [
+      "nsubj",
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "root",
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "punct"
+    ],
+    "head": [
+      6,
+      3,
+      1,
+      6,
+      6,
+      0,
+      6,
+      7,
+      8,
+      9,
+      10,
+      10,
+      6
+    ],
+    "dependencies": [
+      [
+        "nsubj",
+        6,
+        1
+      ],
+      [
+        "dep",
+        3,
+        2
+      ],
+      [
+        "dep",
+        1,
+        3
+      ],
+      [
+        "dep",
+        6,
+        4
+      ],
+      [
+        "dep",
+        6,
+        5
+      ],
+      [
+        "root",
+        0,
+        6
+      ],
+      [
+        "dep",
+        6,
+        7
+      ],
+      [
+        "dep",
+        7,
+        8
+      ],
+      [
+        "dep",
+        8,
+        9
+      ],
+      [
+        "dep",
+        9,
+        10
+      ],
+      [
+        "dep",
+        10,
+        11
+      ],
+      [
+        "dep",
+        10,
+        12
+      ],
+      [
+        "punct",
+        6,
+        13
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "my",
+          "battery"
+        ],
+        "polarity": "negative",
+        "from": 1,
+        "to": 3
+      }
+    ]
+  },
+  {
+    "sentence": " Emoji Reactions Feature  disappeared",
+    "token": [
+      "Emoji",
+      "Reactions",
+      "Feature",
+      "disappeared"
+    ],
+    "pos": [
+      "PROPN",
+      "PROPN",
+      "PROPN",
+      "VERB"
+    ],
+    "deprel": [
+      "nn",
+      "root",
+      "dep",
+      "advmod"
+    ],
+    "head": [
+      2,
+      0,
+      2,
+      1
+    ],
+    "dependencies": [
+      [
+        "nn",
+        2,
+        1
+      ],
+      [
+        "root",
+        0,
+        2
+      ],
+      [
+        "dep",
+        2,
+        3
+      ],
+      [
+        "advmod",
+        1,
+        4
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Emoji",
+          "Reactions",
+          "Feature"
+        ],
+        "polarity": "negative",
+        "from": 0,
+        "to": 3
+      }
+    ]
+  },
+  {
+    "sentence": "Just tried  video chat  for the first time, wtf?",
+    "token": [
+      "Just",
+      "tried",
+      "video",
+      "chat",
+      "for",
+      "the",
+      "first",
+      "time",
+      ",",
+      "wtf",
+      "?"
+    ],
+    "pos": [
+      "ADV",
+      "VERB",
+      "NOUN",
+      "NOUN",
+      "ADP",
+      "DET",
+      "ADJ",
+      "NOUN",
+      "PUNCT",
+      "PROPN",
+      "PUNCT"
+    ],
+    "deprel": [
+      "dep",
+      "dep",
+      "dep",
+      "root",
+      "prep",
+      "det",
+      "amod",
+      "pobj",
+      "prep",
+      "dep",
+      "dep"
+    ],
+    "head": [
+      2,
+      4,
+      4,
+      0,
+      4,
+      8,
+      8,
+      5,
+      8,
+      8,
+      10
+    ],
+    "dependencies": [
+      [
+        "dep",
+        2,
+        1
+      ],
+      [
+        "dep",
+        4,
+        2
+      ],
+      [
+        "dep",
+        4,
+        3
+      ],
+      [
+        "root",
+        0,
+        4
+      ],
+      [
+        "prep",
+        4,
+        5
+      ],
+      [
+        "det",
+        8,
+        6
+      ],
+      [
+        "amod",
+        8,
+        7
+      ],
+      [
+        "pobj",
+        5,
+        8
+      ],
+      [
+        "prep",
+        8,
+        9
+      ],
+      [
+        "dep",
+        8,
+        10
+      ],
+      [
+        "dep",
+        10,
+        11
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "video",
+          "chat"
+        ],
+        "polarity": "negative",
+        "from": 2,
+        "to": 4
+      }
+    ]
+  },
+  {
+    "sentence": "YET ANOTHER  6P SCREEN PROTECTOR  QUESTION SORRY IN ADVANCE !",
+    "token": [
+      "YET",
+      "ANOTHER",
+      "6P",
+      "SCREEN",
+      "PROTECTOR",
+      "QUESTION",
+      "SORRY",
+      "IN",
+      "ADVANCE",
+      "!"
+    ],
+    "pos": [
+      "ADV",
+      "PROPN",
+      "PROPN",
+      "PROPN",
+      "PROPN",
+      "PROPN",
+      "NOUN",
+      "ADP",
+      "PROPN",
+      "PUNCT"
+    ],
+    "deprel": [
+      "nn",
+      "root",
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "dep"
+    ],
+    "head": [
+      2,
+      0,
+      2,
+      3,
+      3,
+      5,
+      6,
+      9,
+      6,
+      9
+    ],
+    "dependencies": [
+      [
+        "nn",
+        2,
+        1
+      ],
+      [
+        "root",
+        0,
+        2
+      ],
+      [
+        "dep",
+        2,
+        3
+      ],
+      [
+        "dep",
+        3,
+        4
+      ],
+      [
+        "dep",
+        3,
+        5
+      ],
+      [
+        "dep",
+        5,
+        6
+      ],
+      [
+        "dep",
+        6,
+        7
+      ],
+      [
+        "dep",
+        9,
+        8
+      ],
+      [
+        "dep",
+        6,
+        9
+      ],
+      [
+        "dep",
+        9,
+        10
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "6P",
+          "SCREEN",
+          "PROTECTOR"
+        ],
+        "polarity": "neutral",
+        "from": 2,
+        "to": 5
+      }
+    ]
+  },
+  {
+    "sentence": "Do you have a Pixel 3xl  screen ?",
+    "token": [
+      "Do",
+      "you",
+      "have",
+      "a",
+      "Pixel",
+      "3xl",
+      "screen",
+      "?"
+    ],
+    "pos": [
+      "AUX",
+      "PRON",
+      "AUX",
+      "DET",
+      "PROPN",
+      "NOUN",
+      "NOUN",
+      "PUNCT"
+    ],
+    "deprel": [
+      "aux",
+      "nsubj",
+      "root",
+      "dep",
+      "dep",
+      "dep",
+      "dobj",
+      "discourse"
+    ],
+    "head": [
+      3,
+      3,
+      0,
+      7,
+      7,
+      7,
+      3,
+      3
+    ],
+    "dependencies": [
+      [
+        "aux",
+        3,
+        1
+      ],
+      [
+        "nsubj",
+        3,
+        2
+      ],
+      [
+        "root",
+        0,
+        3
+      ],
+      [
+        "dep",
+        7,
+        4
+      ],
+      [
+        "dep",
+        7,
+        5
+      ],
+      [
+        "dep",
+        7,
+        6
+      ],
+      [
+        "dobj",
+        3,
+        7
+      ],
+      [
+        "discourse",
+        3,
+        8
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "screen"
+        ],
+        "polarity": "neutral",
+        "from": 6,
+        "to": 7
+      }
+    ]
+  },
+  {
+    "sentence": "Pixel 4  Screen  Randomly Goes Black",
+    "token": [
+      "Pixel",
+      "4",
+      "Screen",
+      "Randomly",
+      "Goes",
+      "Black"
+    ],
+    "pos": [
+      "PROPN",
+      "NUM",
+      "PROPN",
+      "PROPN",
+      "VERB",
+      "PROPN"
+    ],
+    "deprel": [
+      "root",
+      "dep",
+      "nn",
+      "dep",
+      "dep",
+      "num"
+    ],
+    "head": [
+      0,
+      1,
+      4,
+      2,
+      4,
+      5
+    ],
+    "dependencies": [
+      [
+        "root",
+        0,
+        1
+      ],
+      [
+        "dep",
+        1,
+        2
+      ],
+      [
+        "nn",
+        4,
+        3
+      ],
+      [
+        "dep",
+        2,
+        4
+      ],
+      [
+        "dep",
+        4,
+        5
+      ],
+      [
+        "num",
+        5,
+        6
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Screen"
+        ],
+        "polarity": "negative",
+        "from": 2,
+        "to": 3
+      }
+    ]
+  },
+  {
+    "sentence": "Pixel 6 not recognised by laptop on Windows 10 for  file transfer ",
+    "token": [
+      "Pixel",
+      "6",
+      "not",
+      "recognised",
+      "by",
+      "laptop",
+      "on",
+      "Windows",
+      "10",
+      "for",
+      "file",
+      "transfer"
+    ],
+    "pos": [
+      "PROPN",
+      "NUM",
+      "PART",
+      "VERB",
+      "ADP",
+      "NOUN",
+      "ADP",
+      "PROPN",
+      "NUM",
+      "ADP",
+      "NOUN",
+      "NOUN"
+    ],
+    "deprel": [
+      "dep",
+      "root",
+      "neg",
+      "dep",
+      "prep",
+      "pobj",
+      "prep",
+      "pobj",
+      "dep",
+      "prep",
+      "dep",
+      "pobj"
+    ],
+    "head": [
+      2,
+      0,
+      4,
+      2,
+      4,
+      5,
+      6,
+      7,
+      6,
+      9,
+      12,
+      10
+    ],
+    "dependencies": [
+      [
+        "dep",
+        2,
+        1
+      ],
+      [
+        "root",
+        0,
+        2
+      ],
+      [
+        "neg",
+        4,
+        3
+      ],
+      [
+        "dep",
+        2,
+        4
+      ],
+      [
+        "prep",
+        4,
+        5
+      ],
+      [
+        "pobj",
+        5,
+        6
+      ],
+      [
+        "prep",
+        6,
+        7
+      ],
+      [
+        "pobj",
+        7,
+        8
+      ],
+      [
+        "dep",
+        6,
+        9
+      ],
+      [
+        "prep",
+        9,
+        10
+      ],
+      [
+        "dep",
+        12,
+        11
+      ],
+      [
+        "pobj",
+        10,
+        12
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "file",
+          "transfer"
+        ],
+        "polarity": "negative",
+        "from": 10,
+        "to": 12
+      }
+    ]
+  },
+  {
+    "sentence": "Missing the  finger scanner ",
+    "token": [
+      "Missing",
+      "the",
+      "finger",
+      "scanner"
+    ],
+    "pos": [
+      "VERB",
+      "DET",
+      "NOUN",
+      "NOUN"
+    ],
+    "deprel": [
+      "root",
+      "prep",
+      "nn",
+      "dep"
+    ],
+    "head": [
+      0,
+      1,
+      4,
+      2
+    ],
+    "dependencies": [
+      [
+        "root",
+        0,
+        1
+      ],
+      [
+        "prep",
+        1,
+        2
+      ],
+      [
+        "nn",
+        4,
+        3
+      ],
+      [
+        "dep",
+        2,
+        4
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "finger",
+          "scanner"
+        ],
+        "polarity": "neutral",
+        "from": 2,
+        "to": 4
+      }
+    ]
+  },
+  {
+    "sentence": "Im stuck in a  boot  loop",
+    "token": [
+      "I",
+      "m",
+      "stuck",
+      "in",
+      "a",
+      "boot",
+      "loop"
+    ],
+    "pos": [
+      "PRON",
+      "VERB",
+      "VERB",
+      "ADP",
+      "DET",
+      "NOUN",
+      "NOUN"
+    ],
+    "deprel": [
+      "nsubj",
+      "root",
+      "amod",
+      "prep",
+      "det",
+      "nn",
+      "pobj"
+    ],
+    "head": [
+      2,
+      0,
+      2,
+      3,
+      7,
+      7,
+      4
+    ],
+    "dependencies": [
+      [
+        "nsubj",
+        2,
+        1
+      ],
+      [
+        "root",
+        0,
+        2
+      ],
+      [
+        "amod",
+        2,
+        3
+      ],
+      [
+        "prep",
+        3,
+        4
+      ],
+      [
+        "det",
+        7,
+        5
+      ],
+      [
+        "nn",
+        7,
+        6
+      ],
+      [
+        "pobj",
+        4,
+        7
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "boot"
+        ],
+        "polarity": "neutral",
+        "from": 5,
+        "to": 6
+      }
+    ]
+  },
+  {
+    "sentence": "Random  Restarts ",
+    "token": [
+      "Random",
+      "Restarts"
+    ],
+    "pos": [
+      "PROPN",
+      "NOUN"
+    ],
+    "deprel": [
+      "amod",
+      "root"
+    ],
+    "head": [
+      2,
+      0
+    ],
+    "dependencies": [
+      [
+        "amod",
+        2,
+        1
+      ],
+      [
+        "root",
+        0,
+        2
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Restarts"
+        ],
+        "polarity": "negative",
+        "from": 1,
+        "to": 2
+      }
+    ]
+  },
+  {
+    "sentence": " Screen  randomly has inputs",
+    "token": [
+      "Screen",
+      "randomly",
+      "has",
+      "inputs"
+    ],
+    "pos": [
+      "PROPN",
+      "ADV",
+      "AUX",
+      "NOUN"
+    ],
+    "deprel": [
+      "nn",
+      "advmod",
+      "root",
+      "dobj"
+    ],
+    "head": [
+      2,
+      3,
+      0,
+      3
+    ],
+    "dependencies": [
+      [
+        "nn",
+        2,
+        1
+      ],
+      [
+        "advmod",
+        3,
+        2
+      ],
+      [
+        "root",
+        0,
+        3
+      ],
+      [
+        "dobj",
+        3,
+        4
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Screen"
+        ],
+        "polarity": "negative",
+        "from": 0,
+        "to": 1
+      }
+    ]
+  },
+  {
+    "sentence": "Pixel 7 Pro cant add event tickets to  google wallet ",
+    "token": [
+      "Pixel",
+      "7",
+      "Pro",
+      "ca",
+      "nt",
+      "add",
+      "event",
+      "tickets",
+      "to",
+      "google",
+      "wallet"
+    ],
+    "pos": [
+      "PROPN",
+      "NUM",
+      "PROPN",
+      "AUX",
+      "PART",
+      "VERB",
+      "NOUN",
+      "NOUN",
+      "ADP",
+      "PROPN",
+      "NOUN"
+    ],
+    "deprel": [
+      "dep",
+      "root",
+      "dep",
+      "dep",
+      "dep",
+      "dep",
+      "amod",
+      "dep",
+      "prep",
+      "dep",
+      "pobj"
+    ],
+    "head": [
+      2,
+      0,
+      2,
+      2,
+      4,
+      5,
+      8,
+      5,
+      8,
+      11,
+      9
+    ],
+    "dependencies": [
+      [
+        "dep",
+        2,
+        1
+      ],
+      [
+        "root",
+        0,
+        2
+      ],
+      [
+        "dep",
+        2,
+        3
+      ],
+      [
+        "dep",
+        2,
+        4
+      ],
+      [
+        "dep",
+        4,
+        5
+      ],
+      [
+        "dep",
+        5,
+        6
+      ],
+      [
+        "amod",
+        8,
+        7
+      ],
+      [
+        "dep",
+        5,
+        8
+      ],
+      [
+        "prep",
+        8,
+        9
+      ],
+      [
+        "dep",
+        11,
+        10
+      ],
+      [
+        "pobj",
+        9,
+        11
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "google",
+          "wallet"
+        ],
+        "polarity": "negative",
+        "from": 9,
+        "to": 11
+      }
+    ]
+  },
+  {
+    "sentence": "Pixel 5 died after  pairing  with Pixel watch.\nAny solutions?",
+    "token": [
+      "Pixel",
+      "5",
+      "died",
+      "after",
+      "pairing",
+      "with",
+      "Pixel",
+      "watch",
+      ".",
+      "Any",
+      "solutions",
+      "?"
+    ],
+    "pos": [
+      "PROPN",
+      "NUM",
+      "VERB",
+      "ADP",
+      "VERB",
+      "ADP",
+      "PROPN",
+      "NOUN",
+      "PUNCT",
+      "DET",
+      "NOUN",
+      "PUNCT"
+    ],
+    "deprel": [
+      "root",
+      "dep",
+      "dep",
+      "prep",
+      "pobj",
+      "prep",
+      "dep",
+      "amod",
+      "dep",
+      "dep",
+      "pobj",
+      "dep"
+    ],
+    "head": [
+      0,
+      3,
+      1,
+      1,
+      4,
+      5,
+      10,
+      10,
+      10,
+      11,
+      6,
+      11
+    ],
+    "dependencies": [
+      [
+        "root",
+        0,
+        1
+      ],
+      [
+        "dep",
+        3,
+        2
+      ],
+      [
+        "dep",
+        1,
+        3
+      ],
+      [
+        "prep",
+        1,
+        4
+      ],
+      [
+        "pobj",
+        4,
+        5
+      ],
+      [
+        "prep",
+        5,
+        6
+      ],
+      [
+        "dep",
+        10,
+        7
+      ],
+      [
+        "amod",
+        10,
+        8
+      ],
+      [
+        "dep",
+        10,
+        9
+      ],
+      [
+        "dep",
+        11,
+        10
+      ],
+      [
+        "pobj",
+        6,
+        11
+      ],
+      [
+        "dep",
+        11,
+        12
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "pairing"
+        ],
+        "polarity": "negative",
+        "from": 4,
+        "to": 5
+      }
+    ]
+  },
+  {
+    "sentence": " Tradein  delays",
+    "token": [
+      "Tradein",
+      "delays"
+    ],
+    "pos": [
+      "PROPN",
+      "NOUN"
+    ],
+    "deprel": [
+      "nsubj",
+      "root"
+    ],
+    "head": [
+      2,
+      0
+    ],
+    "dependencies": [
+      [
+        "nsubj",
+        2,
+        1
+      ],
+      [
+        "root",
+        0,
+        2
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Tradein"
+        ],
+        "polarity": "neutral",
+        "from": 0,
+        "to": 1
+      }
+    ]
+  },
+  {
+    "sentence": " Phone bubble  rerurned",
+    "token": [
+      "Phone",
+      "bubble",
+      "rerurned"
+    ],
+    "pos": [
+      "PROPN",
+      "NOUN",
+      "VERB"
+    ],
+    "deprel": [
+      "root",
+      "dep",
+      "dep"
+    ],
+    "head": [
+      0,
+      1,
+      2
+    ],
+    "dependencies": [
+      [
+        "root",
+        0,
+        1
+      ],
+      [
+        "dep",
+        1,
+        2
+      ],
+      [
+        "dep",
+        2,
+        3
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Phone",
+          "bubble"
+        ],
+        "polarity": "negative",
+        "from": 0,
+        "to": 2
+      }
+    ]
+  },
+  {
+    "sentence": "pixel  bug ",
+    "token": [
+      "pixel",
+      "bug"
+    ],
+    "pos": [
+      "PROPN",
+      "NOUN"
+    ],
+    "deprel": [
+      "root",
+      "dep"
+    ],
+    "head": [
+      0,
+      1
+    ],
+    "dependencies": [
+      [
+        "root",
+        0,
+        1
+      ],
+      [
+        "dep",
+        1,
+        2
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "bug"
+        ],
+        "polarity": "negative",
+        "from": 1,
+        "to": 2
+      }
+    ]
+  },
+  {
+    "sentence": " Network Signal  Guru  Pixel 4",
+    "token": [
+      "Network",
+      "Signal",
+      "Guru",
+      "Pixel",
+      "4"
+    ],
+    "pos": [
+      "PROPN",
+      "PROPN",
+      "PROPN",
+      "PROPN",
+      "NUM"
+    ],
+    "deprel": [
+      "amod",
+      "root",
+      "dep",
+      "dep",
+      "dep"
+    ],
+    "head": [
+      2,
+      0,
+      2,
+      2,
+      4
+    ],
+    "dependencies": [
+      [
+        "amod",
+        2,
+        1
+      ],
+      [
+        "root",
+        0,
+        2
+      ],
+      [
+        "dep",
+        2,
+        3
+      ],
+      [
+        "dep",
+        2,
+        4
+      ],
+      [
+        "dep",
+        4,
+        5
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Network",
+          "Signal"
+        ],
+        "polarity": "negative",
+        "from": 0,
+        "to": 2
+      }
+    ]
+  },
+  {
+    "sentence": " Camera App  Crashing",
+    "token": [
+      "Camera",
+      "App",
+      "Crashing"
+    ],
+    "pos": [
+      "PROPN",
+      "PROPN",
+      "VERB"
+    ],
+    "deprel": [
+      "nn",
+      "nn",
+      "root"
+    ],
+    "head": [
+      3,
+      3,
+      0
+    ],
+    "dependencies": [
+      [
+        "nn",
+        3,
+        1
+      ],
+      [
+        "nn",
+        3,
+        2
+      ],
+      [
+        "root",
+        0,
+        3
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Camera",
+          "App"
+        ],
+        "polarity": "negative",
+        "from": 0,
+        "to": 2
+      }
+    ]
+  },
+  {
+    "sentence": " Wallpaper  Panning With Swipe",
+    "token": [
+      "Wallpaper",
+      "Panning",
+      "With",
+      "Swipe"
+    ],
+    "pos": [
+      "PROPN",
+      "VERB",
+      "ADP",
+      "PROPN"
+    ],
+    "deprel": [
+      "dep",
+      "root",
+      "dep",
+      "dep"
+    ],
+    "head": [
+      2,
+      0,
+      2,
+      3
+    ],
+    "dependencies": [
+      [
+        "dep",
+        2,
+        1
+      ],
+      [
+        "root",
+        0,
+        2
+      ],
+      [
+        "dep",
+        2,
+        3
+      ],
+      [
+        "dep",
+        3,
+        4
+      ]
+    ],
+    "aspects": [
+      {
+        "term": [
+          "Wallpaper"
+        ],
+        "polarity": "negative",
+        "from": 0,
+        "to": 1
+      }
+    ]
+  }
+]
