@@ -21,13 +21,7 @@ from transformers import XLMRobertaModel, XLNetModel
 
 from pipe import DataPipe
 
-# fitlog.debug()
-root_fp = r"/home/P76114511/RoBERTaABSA/Train"
-os.makedirs(f"{root_fp}/FT_logs", exist_ok=True)
 
-
-fitlog.set_log_dir(f"{root_fp}/FT_logs")
-fitlog.set_rng_seed()
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -46,7 +40,7 @@ parser.add_argument(
 parser.add_argument(
     "--data_dir",
     type=str,
-    help="dataset dir, should concat with dataset arguement",
+    help="dataset dir, should concat with dataset argument",
 )
 parser.add_argument("--lr", type=float, default=2e-5)
 parser.add_argument(
@@ -64,15 +58,18 @@ parser.add_argument(
 )
 parser.add_argument("--save_embed", default=1, type=int)
 parser.add_argument("--batch_size", default=32, type=int)
-parser.add_argument("--n_epochs", default=20, type=int)
+parser.add_argument("--n_epochs", default=5, type=int)
 parser.add_argument("--pool", default="max")
 parser.add_argument("--dropout", default=0.5,type=float)
 parser.add_argument("--warmup",default=0.01,type=float)
-
+parser.add_argument("--root_fp",default="/home/P76114511/projects/RoBERTaABSA/Train",type=str)
 args = parser.parse_args()
 print(f'args.data_dir: {args.data_dir}')
 # args.data_dir = r"/your/work/space/RoBERTaABSA/Dataset"
-
+# fitlog.debug()
+os.makedirs(f"{args.root_fp}/FT_logs", exist_ok=True)
+fitlog.set_log_dir(f"{args.root_fp}/FT_logs")
+fitlog.set_rng_seed()
 fitlog.add_hyper(args)
 print(args)
 
@@ -90,7 +87,7 @@ elif model_type == "xlmroberta":
 
 
 @cache_results(
-    f"{root_fp}/caches/data_{args.dataset}_{mask}_{args.model_name}.pkl",
+    f"{args.root_fp}/caches/data_{args.dataset}_{mask}_{args.model_name}.pkl",
     _refresh=False,
 )
 def get_data():
@@ -272,10 +269,10 @@ trainer.train(load_best_model=True)
 
 if args.save_embed:
     fitlog.add_other(trainer.start_time, name="start_time")
-    os.makedirs(f"{root_fp}/save_models", exist_ok=True)
+    os.makedirs(f"{args.root_fp}/save_models", exist_ok=True)
     trainer_st = trainer.start_time[:19].replace("-", "_")
-    folder = f"{root_fp}/save_models/{model_type}-{args.dataset}-FT-{trainer_st}"
-
+    folder = f"{args.root_fp}/save_models/{args.model_name}-{args.dataset}-FT"
+    print(f"Saved fine-tuned PTM to {folder}")
     if not os.path.exists(folder):
         os.makedirs(folder, exist_ok=True)
         if model_type  in ('bert', 'roberta'):
