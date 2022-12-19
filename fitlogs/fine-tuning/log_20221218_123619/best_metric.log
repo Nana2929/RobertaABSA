@@ -1,3 +1,0 @@
-{"metric": {"AccuracyMetric": {"acc": 0.663009}, "ClassifyFPreRecMetric": {"f": 0.48131, "pre": 0.416732, "rec": 0.569648}, "step": 36, "epoch": 1}}
-{"metric": {"AccuracyMetric": {"acc": 0.791536}, "ClassifyFPreRecMetric": {"f": 0.750642, "pre": 0.755596, "rec": 0.765369}, "step": 73, "epoch": 2}}
-{"metric": {"AccuracyMetric": {"acc": 0.811912}, "ClassifyFPreRecMetric": {"f": 0.770923, "pre": 0.790521, "rec": 0.790727}, "step": 186, "epoch": 5}}

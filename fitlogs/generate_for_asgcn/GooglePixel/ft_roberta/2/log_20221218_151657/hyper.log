@@ -1,3 +1,0 @@
-{"hyper": {"matrix_folder": "roberta/GooglePixel/Test", "layers": "2", "root_fp": "/home/P76114511/projects/RoBERTaABSA", "subword": "avg", "root": "non_gold", "is_finetuned": "ft", "decoder": "cle"}}
-{"hyper": {"task": "generate_for_asgcn"}}
-{"hyper": {"UAS": 0.25165562913907286, "UUAS": 0.47019867549668876, "NED": 0.5231788079470199, "correct arcs": 38.0, "total arcs": 151.0}}

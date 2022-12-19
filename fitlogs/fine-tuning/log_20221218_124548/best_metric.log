@@ -1,1 +1,0 @@
-{"metric": {"AccuracyMetric": {"acc": 0.658307}, "ClassifyFPreRecMetric": {"f": 0.484236, "pre": 0.43235, "rec": 0.613888}, "step": 38, "epoch": 1}}

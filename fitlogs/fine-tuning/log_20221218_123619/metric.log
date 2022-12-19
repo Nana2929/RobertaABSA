@@ -1,5 +1,0 @@
-Step:36	{"metric": {"AccuracyMetric": {"acc": 0.663009}, "ClassifyFPreRecMetric": {"f": 0.48131, "pre": 0.416732, "rec": 0.569648}, "step": 36, "epoch": 1}, "step": 36, "epoch": 1}
-Step:73	{"metric": {"AccuracyMetric": {"acc": 0.791536}, "ClassifyFPreRecMetric": {"f": 0.750642, "pre": 0.755596, "rec": 0.765369}, "step": 73, "epoch": 2}, "step": 73, "epoch": 2}
-Step:111	{"metric": {"AccuracyMetric": {"acc": 0.780564}, "ClassifyFPreRecMetric": {"f": 0.721487, "pre": 0.761967, "rec": 0.758781}}, "step": 111, "epoch": 3}
-Step:148	{"metric": {"AccuracyMetric": {"acc": 0.788401}, "ClassifyFPreRecMetric": {"f": 0.728298, "pre": 0.771203, "rec": 0.762673}}, "step": 148, "epoch": 4}
-Step:186	{"metric": {"AccuracyMetric": {"acc": 0.811912}, "ClassifyFPreRecMetric": {"f": 0.770923, "pre": 0.790521, "rec": 0.790727}, "step": 186, "epoch": 5}, "step": 186, "epoch": 5}
