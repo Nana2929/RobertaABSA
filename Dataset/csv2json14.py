@@ -8,7 +8,7 @@ Author: Ching Wen Yang
 Date: 2022.12.11
 Revised based on Dataset/xml2json14.py
 """
-
+import utils
 import json
 from typing import Dict, Tuple, Union
 from allennlp.predictors.predictor import Predictor
@@ -41,7 +41,7 @@ def get_indices(pattern: str,
     return None, None
 
 
-def csv2txt(file_path, predictor, textcol):
+def csv2json(file_path, predictor, textcol):
     """
     Read the original xml file of semeval data and extract the text that have aspect terms.
     Store them in txt file.
@@ -84,7 +84,7 @@ def csv2txt(file_path, predictor, textcol):
 
         # === dependency parsing ===
         allen = predictor.predict(sentence=sent)
-        token, pos, deprel, head, dependencies = dependencies2format(allen)
+        token, pos, deprel, head, dependencies = utils.dependencies2format(allen)
         example["token"] = list(token)
         example["pos"] = pos
         example["deprel"] = deprel
@@ -115,41 +115,13 @@ def csv2txt(file_path, predictor, textcol):
     print(f"Done with {len(final_out)} data entries.")
 
 
-def dependencies2format(doc):  # doc.sentences[i]
-    """
-    Format annotation: sentence of keys
-                                - tokens
-                                - tags
-                                - predicted_dependencies
-                                - predicted_heads
-                                - dependencies
-    RETURN token,pos,deprel,head,dependencies
-    """
-    token = doc["words"]
-    pos = doc["pos"]
-    # sentence['energy'] = doc['energy']
-    predicted_dependencies = doc["predicted_dependencies"]
-    predicted_heads = doc["predicted_heads"]
-    deprel = doc["predicted_dependencies"]
-    head = doc["predicted_heads"]
-    dependencies = []
-    for idx, item in enumerate(predicted_dependencies):
-        dep_tag = item
-        frm = predicted_heads[idx]
-        to = idx + 1
-        dependencies.append(
-            [dep_tag, frm, to]
-        )
-
-    return token, pos, deprel, head, dependencies
-
 
 def get_all_file(args):
     import os
     base_dir = args.base_dir
     textcol = args.textcol
-    csv2txt(os.path.join(base_dir, "Test.csv"), predictor, textcol)
-    csv2txt(os.path.join(base_dir, "Train.csv"), predictor, textcol)
+    csv2json(os.path.join(base_dir, "Test.csv"), predictor, textcol)
+    csv2json(os.path.join(base_dir, "Train.csv"), predictor, textcol)
 
 
 predictor = Predictor.from_path(

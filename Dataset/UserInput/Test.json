@@ -1,0 +1,76 @@
+{
+  "token": [
+    "I",
+    "think",
+    "Google",
+    "Pixel",
+    "has",
+    "great",
+    "camera"
+  ],
+  "pos": [
+    "PRON",
+    "VERB",
+    "PROPN",
+    "PROPN",
+    "AUX",
+    "ADJ",
+    "NOUN"
+  ],
+  "deprel": [
+    "nsubj",
+    "root",
+    "dep",
+    "nsubj",
+    "ccomp",
+    "amod",
+    "dobj"
+  ],
+  "head": [
+    2,
+    0,
+    4,
+    5,
+    2,
+    7,
+    5
+  ],
+  "dependencies": [
+    [
+      "nsubj",
+      2,
+      1
+    ],
+    [
+      "root",
+      0,
+      2
+    ],
+    [
+      "dep",
+      4,
+      3
+    ],
+    [
+      "nsubj",
+      5,
+      4
+    ],
+    [
+      "ccomp",
+      2,
+      5
+    ],
+    [
+      "amod",
+      7,
+      6
+    ],
+    [
+      "dobj",
+      5,
+      7
+    ]
+  ],
+  "aspects": []
+}
