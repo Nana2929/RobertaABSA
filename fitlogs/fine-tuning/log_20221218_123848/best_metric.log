@@ -1,0 +1,5 @@
+{"metric": {"AccuracyMetric": {"acc": 0.652038}, "ClassifyFPreRecMetric": {"f": 0.474918, "pre": 0.408501, "rec": 0.583952}, "step": 38, "epoch": 1}}
+{"metric": {"AccuracyMetric": {"acc": 0.77116}, "ClassifyFPreRecMetric": {"f": 0.711919, "pre": 0.753955, "rec": 0.728153}, "step": 75, "epoch": 2}}
+{"metric": {"AccuracyMetric": {"acc": 0.797806}, "ClassifyFPreRecMetric": {"f": 0.758085, "pre": 0.762916, "rec": 0.754843}, "step": 112, "epoch": 3}}
+{"metric": {"AccuracyMetric": {"acc": 0.815047}, "ClassifyFPreRecMetric": {"f": 0.784493, "pre": 0.775534, "rec": 0.799392}, "step": 149, "epoch": 4}}
+{"metric": {"AccuracyMetric": {"acc": 0.821317}, "ClassifyFPreRecMetric": {"f": 0.783274, "pre": 0.788363, "rec": 0.797776}, "step": 186, "epoch": 5}}

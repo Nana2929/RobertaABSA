@@ -1,0 +1,2 @@
+{"hyper": {"dataset": "Laptop", "data_dir": "Dataset", "lr": 2e-05, "model_name": "roberta_en", "save_embed": 1, "batch_size": 32, "n_epochs": 5, "pool": "max", "dropout": 0.5, "warmup": 0.01, "root_fp": "/home/P76114511/projects/RoBERTaABSA"}}
+{"hyper": {"task": "finetuning PTM"}}

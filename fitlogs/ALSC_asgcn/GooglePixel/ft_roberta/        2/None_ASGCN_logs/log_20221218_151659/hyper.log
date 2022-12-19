@@ -1,0 +1,10 @@
+{"hyper": {"dataset": "asgcn2/roberta/2/GooglePixel", "learning_rate": 0.001, "l2reg": 1e-05, "num_epoch": 100, "batch_size": 32, "embed_dim": 300, "hidden_dim": 300, "dropout": 0.7, "save": false, "layers": 2, "affix": null, "root_fp": "/home/P76114511/projects/RoBERTaABSA", "ptm_name": "roberta", "is_finetuned": "ft", "dset_name": "GooglePixel"}}
+{"hyper": {"model": "ASGCN"}}
+{"hyper": {"task": "ALSC"}}
+{"hyper": {"model_name": "roberta"}}
+{"hyper": {"dataset": "GooglePixel"}}
+{"hyper": {"pre_layer": "2"}}
+{"hyper": {"train_acc": 0.875, "test_acc": 0.7272727272727273, "train_loss": 0.2958884537220001, "test_loss": 3.6023216247558594}}
+{"hyper": {"train_acc": 0.96875, "test_acc": 0.7272727272727273, "train_loss": 0.17408663034439087, "test_loss": 4.112539291381836}}
+{"hyper": {"train_acc": 1.0, "test_acc": 0.5454545454545454, "train_loss": 3.095200008829124e-05, "test_loss": 6.086134433746338}}
+{"hyper": {"train_acc": 1.0, "test_acc": 0.5454545454545454, "train_loss": 3.457017555774655e-06, "test_loss": 5.861025810241699}}
