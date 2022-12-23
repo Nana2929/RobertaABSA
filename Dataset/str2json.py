@@ -25,7 +25,7 @@ def clean_string(string: str):
 
 def str2json(string: str,
              outputfile: str):
-    print(f'Processing user input {string}...')
+    print(f'Processing user input: {string}...')
     example = {}
     sent = string.strip()
     predictor = Predictor.from_path(
@@ -34,16 +34,17 @@ def str2json(string: str,
 
     allen = predictor.predict(sentence=sent)
     token, pos, deprel, head, dependencies = utils.dependencies2format(allen)
+    example["sentence"] = sent
     example["token"] = list(token)
     example["pos"] = pos
     example["deprel"] = deprel
     example["head"] = head
     example["dependencies"] = dependencies
     example["aspects"] = []
-
+    examples = [example]
     assert outputfile.endswith('.json')
     with open(outputfile, "w") as f:
-        json.dump(example, f, indent=2)
+        json.dump(examples, f, indent=2)
     print(f'Writing {outputfile}...')
 
 
