@@ -39,7 +39,7 @@ fi
 echo == inference ALSC ==
 for layer in {0..12}
 do
-    echo == infering w/ $layer layer ==
+    echo == inferring w/ $layer layer ==
     # python3 Perturbed-Masking/generate_asgcn.py --layer=$layer --is_finetuned=$finetuned --matrix_folder="$ptm_type/$dset_name/Train" --root_fp=$project_root
     python3 Perturbed-Masking/generate_asgcn.py --layer=$layer --is_finetuned=$finetuned --matrix_folder="$ptm_type/$dset_name/Test"  --root_fp=$project_root
     python3 ASGCN/infer.py --layer=$layer --input_path=$dset_path/input.txt
