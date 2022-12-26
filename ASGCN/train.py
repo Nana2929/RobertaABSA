@@ -14,8 +14,7 @@ from models import LSTM, ASCNN, ASGCN
 import fitlog
 
 
-
-fitlog.debug()
+# fitlog.debug()
 if "p" in os.environ:
     os.environ["CUDA_VISIBLE_DEVICES"] = os.environ["p"]
 
@@ -85,6 +84,7 @@ class Instructor:
         max_test_f1 = 0
         global_step = 0
         continue_not_increase = 0
+        self.criterion = criterion
         for epoch in range(self.opt.num_epoch):
             print(">" * 100)
             print("epoch: ", epoch)
@@ -113,10 +113,20 @@ class Instructor:
                     n_total += len(outputs)
                     train_acc = n_correct / n_total
 
-                    test_acc, test_f1 = self._evaluate_acc_f1()
+                    test_acc, test_f1, test_loss = self._evaluate_acc_f1_loss()
                     ################fitlog code####################
+                    #  .add_loss(), .add_metric() DO NOT show in the tables
                     fitlog.add_metric(test_acc, name="acc", step=global_step)
                     fitlog.add_metric(test_f1, name="f1", step=global_step)
+                    # .add_hyper() shows info in the tables
+                    fitlog.add_hyper(
+                        {
+                            'train_acc': train_acc,
+                            'test_acc': test_acc,
+                            'train_loss': loss.item(),
+                            'test_loss': test_loss.item(),
+                        }
+                    )
                     ################fitlog code####################
                     if test_acc > max_test_acc:
                         increase_flag = True
@@ -156,7 +166,7 @@ class Instructor:
                 continue_not_increase = 0
         return max_test_acc, max_test_f1
 
-    def _evaluate_acc_f1(self):
+    def _evaluate_acc_f1_loss(self):
         # switch model to evaluation mode
         self.model.eval()
         n_test_correct, n_test_total = 0, 0
@@ -182,13 +192,14 @@ class Instructor:
                     t_outputs_all = torch.cat((t_outputs_all, t_outputs), dim=0)
 
         test_acc = n_test_correct / n_test_total
+        test_loss = self.criterion(t_outputs_all, t_targets_all)
         f1 = metrics.f1_score(
             t_targets_all.cpu(),
             torch.argmax(t_outputs_all, -1).cpu(),
             labels=[0, 1, 2],
             average="macro",
         )
-        return test_acc, f1
+        return test_acc, f1, test_loss
 
     def run(self, repeats=1):
         # Loss and Optimizer
@@ -218,11 +229,6 @@ class Instructor:
         max_test_f1_avg = max_test_f1_avg / repeats
         print("max_test_acc_avg:", max_test_acc_avg )
         print("max_test_f1_avg:", max_test_f1_avg )
-        with open (self.opt.logfile, 'a') as f:
-            f.write(f" =========== {opt.layers} =============\n")
-            f.write(f"max_test_acc_avg: {max_test_acc_avg}\n")
-            f.write(f"max_test_f1_avg: {max_test_f1_avg}\n")
-            print(f'Successfully writing to logfile {self.opt.logfile}')
 
 
 if __name__ == "__main__":
@@ -232,6 +238,7 @@ if __name__ == "__main__":
         "--dataset",
         type=str,
     )
+
     parser.add_argument("--learning_rate", default=0.001, type=float)
     parser.add_argument("--l2reg", default=0.00001, type=float)
     parser.add_argument("--num_epoch", default=100, type=int)
@@ -240,20 +247,27 @@ if __name__ == "__main__":
     parser.add_argument("--hidden_dim", default=300, type=int)
     parser.add_argument("--dropout", default=0.7, type=float)
     parser.add_argument("--save", action='store_true')
-    # 10/22 add model saving mechanism
-    parser.add_argument("--logfile", type=str)
     # specify which layer to run the training
-    parser.add_argument("--layers", type=int, default =-1)
+    parser.add_argument("--layers", type=int, default=-1)
+    # parser.add_argument("--affix", type=str, default="", help="useful information to record as the fitlog dir middle part name")
+
+    parser.add_argument("--root_fp", type=str, default="home/P76114511/projects/RobertaABSA")
+    parser.add_argument("--ptm_name", type=str)
+    parser.add_argument("--is_finetuned", type=str, choices=["ft", "no-ft"])  # fine-tuned or not, values: "ft", "no_ft"
 
     opt = parser.parse_args()  # opt--->all args
     # if opt.dataset.endswith("/"):
     # 10/22 fix parsing issue
     opt.dset_name = opt.dataset.split('/')[-1]
     ################fitlog code####################
-    fitlog.set_log_dir("logs")
+    # affix: records any useful info
+    fitlogdir = f"{opt.root_fp}/fitlogs/ALSC_asgcn/{opt.dset_name}/{opt.is_finetuned}_{opt.ptm_name}"
+    os.makedirs(fitlogdir, exist_ok=True)
+    fitlog.set_log_dir(fitlogdir)
     fitlog.set_rng_seed()
     fitlog.add_hyper(opt)
     fitlog.add_hyper(value="ASGCN", name="model")
+    fitlog.add_hyper(value="ALSC", name="task")
     ################fitlog code####################
     opt.polarities_dim = 3
     opt.initializer = "xavier_uniform_"
@@ -263,6 +277,8 @@ if __name__ == "__main__":
     opt.l2reg = 1e-5
     opt.early_stop = 25
     print(f'Save model? {opt.save}')
+    if not fitlog.is_debug():
+        print(f'fitlog available via `fitlog log {fitlogdir}`...')
 
     if "/" in opt.dataset:
         pre_model_name, layer, dataset = opt.dataset.split("/")[-3:]

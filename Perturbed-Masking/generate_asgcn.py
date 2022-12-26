@@ -9,6 +9,7 @@ import networkx as nx
 from dependency import _evaluation as dep_eval
 import os
 import numpy as np
+import fitlog
 
 
 if __name__ == "__main__":
@@ -17,10 +18,12 @@ if __name__ == "__main__":
     parser.add_argument(
         "--matrix_folder", default="bert/Restaurants", help="bert/Restaurants"
     )
-    parser.add_argument("--layers", default="12")
-    parser.add_argument("--project_dir", default="/home/nanaeilish/projects/Github/RobertaABSA/")
+    parser.add_argument("--layer", default="12")
+    # parser.add_argument('--tree_prefix', '-tpf', default=None)
+    parser.add_argument("--root_fp", default="/home/nanaeilish/projects/RobertaABSA/")
     parser.add_argument("--subword", default="avg", choices=["first", "avg", "max"])
     parser.add_argument("--root", default="non-gold", help="use gold root as init")
+    parser.add_argument("--is_finetuned", "-if", choices=["ft", "no-ft"])
     parser.add_argument(
         "--decoder",
         default="cle",
@@ -42,10 +45,21 @@ if __name__ == "__main__":
     model_type, dataset, split = args.matrix_folder.split("/")
     matrix_folder = "save_matrix/" + args.matrix_folder
     os.makedirs(os.path.join("asgcn2", model_type), exist_ok=True)
-    os.makedirs(os.path.join("asgcn2", model_type, args.layers), exist_ok=True)
-    os.makedirs(os.path.join("asgcn2", model_type, args.layers, dataset), exist_ok=True)
-    save_folder = os.path.join("asgcn2", model_type, args.layers, dataset)
+    os.makedirs(os.path.join("asgcn2", model_type, args.layer), exist_ok=True)
+    os.makedirs(os.path.join("asgcn2", model_type, args.layer, dataset), exist_ok=True)
+    save_folder = os.path.join("asgcn2", model_type, args.layer, dataset)
+    ############# fitlog code############
+    task_name = "generate_for_asgcn"
+    fitlogdir = f"{args.root_fp}/fitlogs/{task_name}/{dataset}/{args.is_finetuned}_{model_type}"
+    os.makedirs(fitlogdir, exist_ok=True)
+    fitlog.set_log_dir(fitlogdir)
+    fitlog.set_rng_seed()
+    fitlog.add_hyper(args)
+    fitlog.add_hyper(value=task_name, name="task")
+    if not fitlog.is_debug():
+        print(f'fitlog available via `fitlog log {fitlogdir}`...')
 
+    ############# fitlog code############
     print("Save to {}".format(save_folder))
 
     mapping = {"positive": 1, "neutral": 0, "negative": -1}
@@ -53,7 +67,7 @@ if __name__ == "__main__":
     for fn in fns:
         ps = fn[:-4].split("-")
         layer = ps[-1]
-        if layer == args.layers:
+        if layer == args.layer:
             # split = ps[-2]  # train or test
             # split = split[0].capitalize() + split[1:].lower()
             print(f'Processing {split}...')
@@ -66,7 +80,11 @@ if __name__ == "__main__":
                 graph_fn = "{}_{}.xml.seg.graph".format(dataset, split)
             trees, results = dep_parsing_new(args)
 
-            dep_eval(trees, results)
+            # return uas, uuas, ned, uas_count, total_relations
+
+            depstats = dep_eval(trees, results, return_dict=True)
+            print(depstats)
+            fitlog.add_hyper(depstats)
             print(f'Processing {fn}...')
             tokens = []
             with open(
@@ -78,7 +96,7 @@ if __name__ == "__main__":
                 for ((line, _, _), tree) in zip(results, trees):
                     sentence = [x.form for x in line][1:]  # [去掉root]
                     # w_i-1是因为有cls
-                    if args.layers != "0":
+                    if args.layer != "0":
                         edges = [
                             (head - 1, w_i - 1) if head != 0 else (w_i - 1, w_i - 1)
                             for (w_i, head) in tree[1:]
@@ -107,12 +125,16 @@ if __name__ == "__main__":
                         )
                         f1.write(" ".join(tokens) + "\n")
                         f1.write(" ".join(terms) + "\n")
-                        print(aspect, type(aspect["polarity"]))
+                        # print(aspect, type(aspect["polarity"]))
                         f1.write("{}\n".format(mapping[aspect["polarity"]]))
                         adj_matrixes[len(adj_matrixes) * 3] = adj_matrix
                 pickle.dump(adj_matrixes, f2)
-            treepath = f"{args.project_dir}/Perturbed-Masking/DepTrees/{split}-{args.layers}.npy"
+            treepath = f"{args.root_fp}/DepTrees/{dataset}-{split}-{args.layer}.npy"
 
             print(f'Saving into {treepath}')
             np.save(treepath, trees)
+        fitlog.finish()
+    print(fitlog.get_log_dir())
+    print(fitlog.get_log_folder())
+    print(fitlog.get_log_id())
 

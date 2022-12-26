@@ -6,7 +6,7 @@ if "p" in os.environ:
 import warnings
 
 warnings.filterwarnings("ignore")
-from utils import ConllUDataset, ResLoader
+from utils.utils import ConllUDataset, ResLoader
 from transformers import BertModel, BertTokenizer, RobertaTokenizer, RobertaModel
 from dependency import get_dep_matrix, get_dep_matrix_new
 from constituency import get_con_matrix

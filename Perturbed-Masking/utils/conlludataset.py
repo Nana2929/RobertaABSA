@@ -154,15 +154,18 @@ class DataLoader(Loader):
 
         for split, name in zip(['test', 'train'], fns):
             fp = os.path.join(paths, name)
-            with open(fp, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            ds = DataSet()
-            for ins in data:
-                tokens = ins['token']
-                pos = ins['pos']
-                dep = ins['dependencies']
-                aspects = ins['aspects']
-                ins = Instance(tokens=tokens, pos=pos, dep=dep, aspects=aspects)
-                ds.append(ins)
-            data_bundle.set_dataset(ds, name=split)
+            try:
+                with open(fp, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                ds = DataSet()
+                for ins in data:
+                    tokens = ins['token']
+                    pos = ins['pos']
+                    dep = ins['dependencies']
+                    aspects = ins['aspects']
+                    ins = Instance(tokens=tokens, pos=pos, dep=dep, aspects=aspects)
+                    ds.append(ins)
+                data_bundle.set_dataset(ds, name=split)
+            except FileNotFoundError:
+                print(f'File {fp} not found, skip it.')
         return data_bundle

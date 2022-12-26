@@ -62,15 +62,21 @@ parser.add_argument("--n_epochs", default=5, type=int)
 parser.add_argument("--pool", default="max")
 parser.add_argument("--dropout", default=0.5,type=float)
 parser.add_argument("--warmup",default=0.01,type=float)
-parser.add_argument("--root_fp",default="/home/P76114511/projects/RoBERTaABSA/Train",type=str)
+parser.add_argument("--root_fp",default="/home/P76114511/projects/RoBERTaABSA",type=str)
+parser.add_argument("--is_finetuned",default="ft",type=str)
+parser.add_argument("--dset_name",default="Laptop",type=str)
+
 args = parser.parse_args()
 print(f'args.data_dir: {args.data_dir}')
 # args.data_dir = r"/your/work/space/RoBERTaABSA/Dataset"
 # fitlog.debug()
-os.makedirs(f"{args.root_fp}/FT_logs", exist_ok=True)
-fitlog.set_log_dir(f"{args.root_fp}/FT_logs")
+fitlogdir = f"{args.root_fp}/fitlogs/fine-tuning/{args.dset_name}_{args.is_finetuned}_{args.model_name}"
+os.makedirs(fitlogdir, exist_ok=True)
+
+fitlog.set_log_dir(fitlogdir)
 fitlog.set_rng_seed()
 fitlog.add_hyper(args)
+fitlog.add_hyper(value="finetuning PTM", name="task")
 print(args)
 
 
@@ -271,11 +277,11 @@ if args.save_embed:
     fitlog.add_other(trainer.start_time, name="start_time")
     os.makedirs(f"{args.root_fp}/save_models", exist_ok=True)
     trainer_st = trainer.start_time[:19].replace("-", "_")
-    folder = f"{args.root_fp}/save_models/{args.model_name}-{args.dataset}-FT"
-    print(f"Saved fine-tuned PTM to {folder}")
-    if not os.path.exists(folder):
-        os.makedirs(folder, exist_ok=True)
-        if model_type  in ('bert', 'roberta'):
-            embed.save(folder)
-        else:
-            embed.save_pretrained(folder)
+    folder = f"{args.root_fp}/Train/save_models/{args.model_name}-{args.dataset}-FT"
+    folder = f'{folder}/{args.model_name}'
+    os.makedirs(folder, exist_ok=True)
+#     save()
+#     会在folder下创建两个文件bert_encoder_hyper.json与bert_encoder/, bert_encoder下包含三个文件config.json,
+#     pytorch_model.bin,vocab.txt三个文件(该folder下的数据也可以直接被BERTModel读取)
+    embed.save(folder)
+    print(f"Saved fine-tuned ptm to {folder}")

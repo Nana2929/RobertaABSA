@@ -20,7 +20,7 @@ def ned_standard(gold):
     return gold + undirected + ned
 
 
-def _evaluation(trees, results):
+def _evaluation(trees, results, return_dict=False):
     uas_count, total_relations = 0., 0.
     uuas_count = 0.
     ned_count = 0.
@@ -43,5 +43,11 @@ def _evaluation(trees, results):
     ned = ned_count / total_relations
     print("UAS, UUAS, NED:", uas, uuas, ned)
     print("correct and total arcs", uas_count, total_relations)
+    if return_dict:
+        return {"UAS": uas,
+                "UUAS": uuas,
+                "NED": ned,
+                "correct arcs": uas_count,
+                "total arcs": total_relations}
     return uas, uuas, ned
 

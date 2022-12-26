@@ -11,6 +11,7 @@ from bucket_iterator import BucketIterator
 from models import LSTM, ASGCN, ASCNN
 from dependency_graph import dependency_adj_matrix
 
+from utils import read_txt
 
 class Inferer:
     """A simple inference example"""
@@ -88,14 +89,26 @@ class Inferer:
 
 
 if __name__ == '__main__':
-    dataset = 'Laptop'
-    layer = 11
-    layer = str(layer)
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--model_name', type=str, default='asgcn')
+    parser.add_argument('--layer', type=str, default="7")
+    parser.add_argument('--dataset', type=str, default='Laptop')
+    parser.add_argument('--embed_dim', type=int, default=300)
+    parser.add_argument('--hidden_dim', type=int, default=300)
+    parser.add_argument('--polarities_dim', type=int, default=3)
+    parser.add_argument('--dropout', type=float, default=0.5)
+    parser.add_argument('--state_dict_path', type=str, default='/home/P76114511/projects/RoBERTaABSA/ASGCN/state_dict')
+    parser.add_argument('--input_path', type=str)
+    # parser.add_argument('--device', type=str, default='cuda')
+    opt = parser.parse_args()
+
     # set your trained models here
+    state_dict_path = opt.state_dict_path
     model_state_dict_paths = {
-        'lstm': 'state_dict/lstm_'+dataset+'_'+layer+'.pkl',
-        'ascnn': 'state_dict/ascnn_'+dataset+'_'+layer+'.pkl',
-        'asgcn': 'state_dict/asgcn_'+dataset+'_'+layer+'.pkl',
+        'lstm': f'{state_dict_path}/lstm_' + opt.dataset + '_' + opt.layer + '.pkl',
+        'ascnn': f'{state_dict_path}/ascnn_' + opt.dataset + '_' + opt.layer + '.pkl',
+        'asgcn': f'{state_dict_path}/asgcn_' + opt.dataset + '_' + opt.layer + '.pkl',
     }
     model_classes = {
         'lstm': LSTM,
@@ -107,20 +120,18 @@ if __name__ == '__main__':
         'ascnn': ['text_indices', 'aspect_indices', 'left_indices'],
         'asgcn': ['text_indices', 'aspect_indices', 'left_indices', 'dependency_graph'],
     }
-    class Option(object): pass
-    opt = Option()
-    opt.model_name = 'asgcn'
+    layer = opt.layer
     opt.model_class = model_classes[opt.model_name]
     opt.inputs_cols = input_colses[opt.model_name]
-    opt.dataset = dataset
+    # opt.dataset = dataset
     opt.state_dict_path = model_state_dict_paths[opt.model_name]
-    opt.embed_dim = 300
-    opt.hidden_dim = 300
-    opt.polarities_dim = 3
-    opt.dropout = 0.5  # need to be the same as in training
+    # opt.dropout = 0.5  # need to be the same as in training
     opt.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    input_path = opt.input_path
+    text, aspect_term = read_txt(input_path)
     inf = Inferer(opt)
-    t_probs = inf.evaluate('The staff should be a bit more friendly .', 'staff')
+    # t_probs = inf.evaluate('The staff should be a bit more friendly .', 'staff')
+    t_probs = inf.evaluate(text, aspect_term)
     mapping = {0: 'negative', 1: 'neutral', 2: 'positive'}
     pred_class = t_probs.argmax(axis=-1)[0]
     print(f'Predicted Sentiment: {mapping[pred_class]}')

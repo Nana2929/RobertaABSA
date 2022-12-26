@@ -40,6 +40,9 @@ if __name__ == "__main__":
     print('USING CUDA: ', args.cuda)
     if "/" not in args.dataset:
         args.dataset = os.path.join(args.data_dir, args.dataset)
+    print(args.dataset)
+
+
     dataset_name = os.path.basename(args.dataset)
 
     if args.model_path.endswith("/"):
@@ -48,6 +51,8 @@ if __name__ == "__main__":
     if "/" in args.model_path:
         print(args.model_path)
         assert os.path.exists(args.model_path)
+
+        # pass in args.model_path: RoBERTaABSA/Train/save_models/roberta-en-Laptop-FT/roberta-en
         model_type = os.path.basename(args.model_path)
         model_type = model_type.split("-")[0]
     else:
@@ -55,7 +60,8 @@ if __name__ == "__main__":
     model_class, tokenizer_class, pretrained_weights = MODEL_CLASSES[model_type]
     trained_on = ""
     if "/" in args.model_path:
-        pretrained_weights = args.model_path
+        pretrained_weights = f'{args.model_path}/{model_type}'
+        print(f"Loading pretrained weights from {pretrained_weights}")
         parts = pretrained_weights.split("/")[-2].split("-")
         print('parts', parts)
         if len(parts) == 2:  # "roberta-Laptop"
@@ -74,25 +80,27 @@ if __name__ == "__main__":
     do_lower = False
     tokenizer = tokenizer_class.from_pretrained(MODEL_CLASSES[model_type][2])
 
-    output_dir = "save_matrix/{}{}{}".format(
-        model_type, trained_on, "" if "/" not in args.model_path else "trained" + msg
-    )
+    output_dir = f"save_matrix/{model_type}"
     os.makedirs(output_dir, exist_ok=True)
     output_dir = os.path.join(output_dir, dataset_name)
     os.makedirs(output_dir, exist_ok=True)
     print("Folder is {}".format(output_dir))
     # save_matrix/{model_type}{trained dataset or ""}{""}/{dataset}/{split}-{layer}.pkl
-
+    print(args.dataset)
     data_bundle = DataLoader().load(args.dataset)
     for name in ["train", "test"]:
         args.data_split = name
-        print('dataset split:', name)
+        # print('dataset split:', name)
         Name = name.capitalize()
         split_dir = os.path.join(output_dir, Name)
         os.makedirs(split_dir, exist_ok=True)
         args.output_file = os.path.join(split_dir, "{}-{}.pkl")
-        ds = data_bundle.get_dataset(name)
-        print(ds)
+        try:
+            ds = data_bundle.get_dataset(name)
+        except:
+            print("No {} split, skipped.".format(name))
+            continue
+        # print(ds)
         dataset = []
         for ins in ds:
             line = [

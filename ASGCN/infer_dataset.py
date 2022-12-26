@@ -121,3 +121,4 @@ if __name__ == '__main__':
     opt.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     DSInf = Inference_Dataset(dataset, split, opt)
     DSInf.run_inference()
+    # /home/P76114511/projects/RoBERTaABSA/ASGCN/infer.py
