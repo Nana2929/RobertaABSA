@@ -141,17 +141,13 @@ class Instructor:
                             layer = self.opt.layer
                             if not self.opt.layer:
                                 layer = 'unk'
+                            model_save_path = "ASGCN/state_dict/" + self.opt.model_name + "_" + self.opt.dset_name + "_" + layer + ".pkl"
                             torch.save(
                                 self.model.state_dict(),
-                                "state_dict/"
-                                + self.opt.model_name
-                                + "_"
-                                + self.opt.dset_name
-                                + "_"
-                                + layer
-                                + ".pkl",
+                                model_save_path
                             )
                             print(">>> best model saved.")
+                            print(">>> model saved to:", model_save_path)
                     print(
                         "loss: {:.4f}, acc: {:.4f}, test_acc: {:.4f}, test_f1: {:.4f}".format(
                             loss.item(), train_acc, test_acc, test_f1

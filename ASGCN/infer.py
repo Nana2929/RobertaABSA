@@ -100,6 +100,7 @@ if __name__ == '__main__':
     parser.add_argument('--dropout', type=float, default=0.5)
     parser.add_argument('--state_dict_path', type=str, default='/home/P76114511/projects/RoBERTaABSA/ASGCN/state_dict')
     parser.add_argument('--input_path', type=str)
+    parser.add_argument('--alsc_out', type=str, default="UserOutput/output.txt")
     # parser.add_argument('--device', type=str, default='cuda')
     opt = parser.parse_args()
 
@@ -128,10 +129,16 @@ if __name__ == '__main__':
     # opt.dropout = 0.5  # need to be the same as in training
     opt.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     input_path = opt.input_path
+    print('loading asgcn trained model from state_dict_path: ', opt.state_dict_path)
     text, aspect_term = read_txt(input_path)
     inf = Inferer(opt)
     # t_probs = inf.evaluate('The staff should be a bit more friendly .', 'staff')
     t_probs = inf.evaluate(text, aspect_term)
     mapping = {0: 'negative', 1: 'neutral', 2: 'positive'}
     pred_class = t_probs.argmax(axis=-1)[0]
+    with open(opt.alsc_out, 'w') as f:
+        f.write(f'{mapping[pred_class]}\n')
+        f.write(f'Probability: {t_probs.max(axis=-1)[0]}')
     print(f'Predicted Sentiment: {mapping[pred_class]}')
+    print(f'Probability: {t_probs.max(axis=-1)[0]}')
+    print(f'ALSC Output file at {opt.alsc_out}')

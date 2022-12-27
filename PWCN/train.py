@@ -13,7 +13,7 @@ from data_utils import ABSADatesetReader
 from models import LSTM, BiLSTMAttn, AOA, PWCN_POS, PWCN_DEP
 import numpy as np
 import fitlog
-fitlog.debug()
+# fitlog.debug()
 
 import os
 
