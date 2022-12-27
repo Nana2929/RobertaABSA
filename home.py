@@ -3,12 +3,34 @@ import base64
 import os
 from tree_drawer.drawer import DepTree
 
-st.title("Deep Learning Final Project Demo")
+st.set_page_config(layout="wide")
+
+st.title("Aspect-level Sentiment Classification with 🎄 Trees!")
+st.markdown("""
+<style>
+.big-font {
+    font-size:20px;
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown('''
+<p class="big-font"> 
+It’s easy!
+
+Input a sentence with sentiment 📃,
+
+and then specify the aspect term that you want to predict the sentiment 🥰😡 with.
+
+Wait for a few seconds to get a tree induced from a bert model 🔮 and its predicted sentiment by an ASGCN 🎁!
+
+Note: the models are trained using SemEval 2014 Laptop ABSA Dataset. Other domains may lead to suboptimal results.</p>
+''', unsafe_allow_html=True)
 
 with st.form("form", clear_on_submit=True):
-    text = st.text_input("Sentence")
-    aspect = st.text_input("Aspect term")
-    model = st.radio("Model", ["Roberta", "BERT"], horizontal=True)
+    text = st.text_input("Sentence", placeholder="This phone has a great camera.")
+    aspect = st.text_input("Aspect term", placeholder="camera")
+    model = st.radio("Model", ["Roberta", "BERT"], horizontal=True) 
     ft = st.radio("Fine-tuned?", ["Yes", "No"], horizontal=True)
     layer = st.slider("layer", 1, 12)
     inference = st.form_submit_button("Inference")
@@ -43,17 +65,21 @@ state_dict_path = f"{project_root}/ASGCN/state_dict_finetuned"
 output_dir = f"{project_root}/UserOutput"
 output_path = f"{output_dir}/output.txt"
 json_path = f"{dset_path }/Test.json"
-npy_path = f"/data/fangyi/Final/RobertaABSA/DepTrees/UserInput-Test-{layer-1}.npy"
+npy_path = f"/data/fangyi/Final/RobertaABSA/DepTrees/UserInput-Test-{layer}.npy"
 
 
 if inference:
     if text == "" or aspect == "":
         st.error('Please enter your sentence and aspect term.', icon="❗")
     else:
-        if aspect not in text:
-            st.error('Please make sure that the specified aspect term is in the input sentence.', icon="🚨")
+        items = aspect.split(",")
+        for item in items:
+            item = item.strip()
+            if item not in text:
+                st.error('Please make sure that the specified aspect term is in the input sentence.', icon="🚨")
+                st.error(f'{item} not in input sentence')
         else:
-            st.write(f"Sentence: {text}")
+            st.markdown(f"**Sentence**: {text}")
             st.write(f"Aspect term: {aspect}")
             with open("/data/fangyi/Final/RobertaABSA/Dataset/UserInput/input.txt", "w") as file:
                 file.write(f"{text}\n")
@@ -71,7 +97,7 @@ if inference:
                                 --data_dir={datadir} \
                                 --dataset={dset_name}')
                 os.system(f'python3 Perturbed-Masking/generate_asgcn.py \
-                            --layer={layer-1} \
+                            --layer={layer} \
                             --is_finetuned={finetuned} \
                             --matrix_folder="{ptm_type}/{dset_name}/Test"  \
                             --root_fp={project_root}')

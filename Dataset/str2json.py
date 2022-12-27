@@ -14,7 +14,7 @@ from lxml import etree
 from tqdm import tqdm
 import re
 import os
-
+from csv2json14 import get_indices
 import utils
 
 
@@ -24,13 +24,22 @@ def clean_string(string: str):
 
 
 def str2json(string: str,
+             aspect: str,
              outputfile: str):
+    tk = SpacyTokenizer()
     print(f'Processing user input: {string}...')
     example = {}
     sent = string.strip()
+    term = aspect.split(",")
+    sent = " ".join(sent.split(" ")[:-1])
     predictor = Predictor.from_path(
         "https://storage.googleapis.com/allennlp-public-models/biaffine-dependency-parser-ptb-2020.04.06.tar.gz"
     )
+    fidx, tidx = get_indices(term, sent)
+    fidx_list = []
+    tidx_list = []
+    fidx_list.append(fidx)
+    tidx_list.append(tidx)
 
     allen = predictor.predict(sentence=sent)
     token, pos, deprel, head, dependencies = utils.dependencies2format(allen)
@@ -41,6 +50,19 @@ def str2json(string: str,
     example["head"] = head
     example["dependencies"] = dependencies
     example["aspects"] = []
+
+    asp = dict()
+    asp["term"] = [str(i) for i in tk.tokenize(term)]
+    asp["polarity"] = "neutral"
+    left_index = (fidx + 1 + 2 * fidx_list.index(fidx))
+    right_index = (tidx + 1 + 2 * tidx_list.index(tidx))
+    left_word_offset = len(tk.tokenize(sent[:left_index]))
+    to_word_offset = len(tk.tokenize(sent[:right_index]))
+
+    asp["from"] = left_word_offset
+    asp["to"] = to_word_offset
+
+    example["aspects"].append(asp)
     examples = [example]
     assert outputfile.endswith('.json')
     with open(outputfile, "w") as f:
@@ -57,9 +79,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
     input_file = os.path.join(args.base_dir, args.txtfile)
     with open(input_file, 'r') as f:
-        string = f.read()
-
-    string = clean_string(string)
+        string = f.readlines()
+    string = clean_string(string[0])
+    aspect = string[1]
     output_file = os.path.join(args.base_dir, 'Test.json')
-    str2json(string, output_file)
+    str2json(string, aspect, output_file)
     # clean the string
