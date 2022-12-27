@@ -130,15 +130,21 @@ if __name__ == '__main__':
     opt.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     input_path = opt.input_path
     print('loading asgcn trained model from state_dict_path: ', opt.state_dict_path)
-    text, aspect_term = read_txt(input_path)
+    text, aspect_terms = read_txt(input_path)
     inf = Inferer(opt)
     # t_probs = inf.evaluate('The staff should be a bit more friendly .', 'staff')
-    t_probs = inf.evaluate(text, aspect_term)
     mapping = {0: 'negative', 1: 'neutral', 2: 'positive'}
-    pred_class = t_probs.argmax(axis=-1)[0]
+    pred_pairs = []
+    for aspect_term in aspect_terms:
+        t_probs = inf.evaluate(text, aspect_term)
+        pred_class = t_probs.argmax(axis=-1)[0]
+        pred_pair = (aspect_term, mapping[pred_class], t_probs.max(axis=-1)[0])
+        pred_pairs.append(pred_pair)
     with open(opt.alsc_out, 'w') as f:
-        f.write(f'{mapping[pred_class]}\n')
-        f.write(f'Probability: {t_probs.max(axis=-1)[0]}')
-    print(f'Predicted Sentiment: {mapping[pred_class]}')
-    print(f'Probability: {t_probs.max(axis=-1)[0]}')
+        for pred_pair in pred_pairs:
+            asp, pol, prob = pred_pair
+            f.write(f'{asp},{pol},{prob}\n')
+            print(f'Aspect Term: {asp}')
+            print(f'Predicted Sentiment: {pol}')
+            print(f'Probability: {prob}')
     print(f'ALSC Output file at {opt.alsc_out}')
