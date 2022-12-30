@@ -4,9 +4,9 @@ datadir="Dataset"
 dset="GooglePixel"
 textcol="title"                       # text title
 
-finetuned="no-ft"                       # "ft", "no-ft"
-ftptm="bert-en-base-uncased"        # if fine-tuned, choose from 'bert-en-base-uncased', 'roberta-en', 'roberta-en-large', 'xlmroberta-xlm-roberta-base', 'bert-multi-base-cased', 'xlnet-xlnet-base-cased'
-ptm="bert"                          # otherwise, choose from 'bert', 'roberta', 'xlmroberta', 'xlnet'
+finetuned="ft"                       # "ft", "no-ft"
+ftptm="roberta-en"        # if fine-tuned, choose from 'bert-en-base-uncased', 'roberta-en', 'roberta-en-large', 'xlmroberta-xlm-roberta-base', 'bert-multi-base-cased', 'xlnet-xlnet-base-cased'
+ptm="roberta"                          # otherwise, choose from 'bert', 'roberta', 'xlmroberta', 'xlnet'
 
 project_root="/home/P76114511/projects/RoBERTaABSA"
 ftdset="Laptop"
@@ -23,7 +23,7 @@ then
     --dset_name=$dset\
     --is_finetuned=$finetuned\
     --dataset=$ftdset
-    python3 Perturbed-Masking/generate_matrix.py --model_path=$ft_model_path --data_dir=$datadir --dataset=$ftdset
+    python3 Perturbed-Masking/generate_matrix.py --model_path=$ft_model_path --data_dir=$datadir --dataset=$dset
 else
     echo == no finetuning ==
     python3 Perturbed-Masking/generate_matrix.py --model_path=$ptm --data_dir=$datadir --dataset=$dset
@@ -33,8 +33,8 @@ echo == training ALSC ==
 for layer in {0..12}
 do
     echo == training w/ $layer layer ==
-    python3 Perturbed-Masking/generate_asgcn.py --layers=$layer --is_finetuned=$finetuned --matrix_folder="$ptm/$dset/Train" --root_fp=$project_root
-    python3 Perturbed-Masking/generate_asgcn.py --layers=$layer --is_finetuned=$finetuned --matrix_folder="$ptm/$dset/Test"  --root_fp=$project_root
-    python3 ASGCN/train.py --dataset=asgcn2/$ptm/$layer/$dset \
+    python3 Perturbed-Masking/generate_asgcn.py --layer=$layer --is_finetuned=$finetuned --matrix_folder="$ptm/${dset}_${finetuned}/Train" --root_fp=$project_root
+    python3 Perturbed-Masking/generate_asgcn.py --layer=$layer --is_finetuned=$finetuned --matrix_folder="$ptm/${dset}_${finetuned}/Test"  --root_fp=$project_root
+    python3 ASGCN/train.py --dataset=asgcn2/$ptm/$layer/${dset}_${finetuned} \
     --is_finetuned=$finetuned --ptm_name=$ptm --root_fp=$project_root --layers=$layer
 done;
