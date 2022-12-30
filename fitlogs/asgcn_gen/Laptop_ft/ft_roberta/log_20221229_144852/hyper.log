@@ -1,0 +1,3 @@
+{"hyper": {"matrix_folder": "roberta/Laptop_ft/Test", "layer": "3", "root_fp": "/home/P76114511/projects/RoBERTaABSA", "subword": "avg", "root": "non_gold", "is_finetuned": "ft", "decoder": "cle"}}
+{"hyper": {"task": "generate_for_asgcn"}}
+{"hyper": {"UAS": 0.2558561281547529, "UUAS": 0.43856732658304365, "NED": 0.4828472117273689, "correct arcs": 1693.0, "total arcs": 6617.0}}

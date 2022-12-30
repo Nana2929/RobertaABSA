@@ -1,0 +1,3 @@
+{"hyper": {"matrix_folder": "bert/GooglePixel_ft/Train", "layer": "4", "root_fp": "/home/P76114511/projects/RoBERTaABSA", "subword": "avg", "root": "non_gold", "is_finetuned": "ft", "decoder": "cle"}}
+{"hyper": {"task": "generate_for_asgcn"}}
+{"hyper": {"UAS": 0.22727272727272727, "UUAS": 0.5104895104895105, "NED": 0.5944055944055944, "correct arcs": 65.0, "total arcs": 286.0}}
